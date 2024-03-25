@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>3.2.3</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+
+
+    <groupId>com.glimmer</groupId>
+    <artifactId>EmploymentReProject</artifactId>
+    <packaging>pom</packaging>
+    <modules>
+        <module>common</module>
+        <module>pojo</module>
+        <module>server</module>
+    </modules>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>EmploymentReProject</name>
+    <description>EmploymentReProject</description>
+
+    <properties>
+        <java.version>17</java.version>
+        <mybatis-spring-boot-starter.version>3.0.3</mybatis-spring-boot-starter.version>
+        <mybatis-spring-boot-starter-test.version>3.0.3</mybatis-spring-boot-starter-test.version>
+        <slf4j-api.version>1.7.28</slf4j-api.version>
+        <slf4j-simple.version>1.7.28</slf4j-simple.version>
+        <jjwt.version>0.9.1</jjwt.version>
+        <lombok.version>1.18.24</lombok.version>
+        <aliyun-sdk-oss.version>3.17.4</aliyun-sdk-oss.version>
+        <jaxb-api.version>2.3.1</jaxb-api.version>
+        <activation.version>1.1.1</activation.version>
+        <jaxb-runtime.version>2.3.3</jaxb-runtime.version>
+        <spring-cloud.version>2023.0.0</spring-cloud.version>
+    </properties>
+
+
+
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+        </dependency>
+    </dependencies>
+</dependencyManagement>
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.mybatis.spring.boot</groupId>
+            <artifactId>mybatis-spring-boot-starter</artifactId>
+            <version>${mybatis-spring-boot-starter.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt</artifactId>
+            <version>${jjwt.version}</version>
+
+        </dependency>
+
+        <dependency>
+            <groupId>com.mysql</groupId>
+            <artifactId>mysql-connector-j</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <optional>true</optional>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+
+        <dependency>
+            <groupId>org.mybatis.spring.boot</groupId>
+            <artifactId>mybatis-spring-boot-starter-test</artifactId>
+            <version>${mybatis-spring-boot-starter-test.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/com.aliyun.oss/aliyun-sdk-oss -->
+        <dependency>
+            <groupId>com.aliyun.oss</groupId>
+            <artifactId>aliyun-sdk-oss</artifactId>
+            <version>${aliyun-sdk-oss.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>javax.xml.bind</groupId>
+            <artifactId>jaxb-api</artifactId>
+            <version>${jaxb-api.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.activation</groupId>
+            <artifactId>activation</artifactId>
+            <version>${activation.version}</version>
+        </dependency>
+        <!-- no more than 2.3.3-->
+        <dependency>
+            <groupId>org.glassfish.jaxb</groupId>
+            <artifactId>jaxb-runtime</artifactId>
+            <version>${jaxb-runtime.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-openfeign</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.aliyun.oss</groupId>
+            <artifactId>aliyun-sdk-oss</artifactId>
+            <version>${aliyun-sdk-oss.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.dtflys.forest</groupId>
+            <artifactId>forest-spring-boot3-starter</artifactId>
+            <version>1.5.36</version>
+        </dependency>
+
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <excludes>
+                        <exclude>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok</artifactId>
+                        </exclude>
+                    </excludes>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
