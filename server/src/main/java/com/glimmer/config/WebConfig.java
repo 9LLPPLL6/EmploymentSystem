@@ -13,7 +13,9 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 public class WebConfig implements WebMvcConfigurer {
     @Autowired
     private LoginCheckInterceptor loginCheckInterceptor;
-    public void addInterceptor(InterceptorRegistry registry){
+
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(loginCheckInterceptor).addPathPatterns("/**").excludePathPatterns("/signup").excludePathPatterns("/login");
     }
 

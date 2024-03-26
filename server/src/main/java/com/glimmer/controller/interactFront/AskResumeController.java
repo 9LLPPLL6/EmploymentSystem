@@ -1,6 +1,7 @@
 package com.glimmer.controller.interactFront;
 
 
+import com.glimmer.dto.BaseInfo;
 import com.glimmer.result.Result;
 import com.glimmer.server.AskResumeService;
 import lombok.extern.slf4j.Slf4j;
@@ -67,5 +68,15 @@ public class AskResumeController {
     public Result AskResumeProject() {
         log.info("返回历史项目经历");
         return Result.success("成功",askResumeService.AskProjectHistory());
+    }
+
+    /**
+     * 返回最新的个人基本信息
+     * @return 最新的个人基本信息
+     */
+    @GetMapping("/resume/newest_base")
+    public Result<BaseInfo> AskNewestBase() {
+        log.info("返回最新个人基本信息");
+        return askResumeService.AskNewestBaseHistory();
     }
 }

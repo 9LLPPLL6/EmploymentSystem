@@ -27,4 +27,7 @@ public interface AskMapper {
 
     @Select("select * from work_experience_info where foreign_key = #{id}")
     List<ProjectExperienceInfo> AskWorkHistory(int id);
+
+    @Select("select * from base_info where foreign_key = #{id} and id = (select MAX(id) from base_info)")
+    BaseInfo AskNewestBaseHistory(int id);
 }

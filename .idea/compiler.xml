@@ -10,7 +10,6 @@
         <module name="pojo" />
         <module name="server" />
         <module name="common" />
-        <module name="EmploymentSystem" />
       </profile>
     </annotationProcessing>
   </component>
