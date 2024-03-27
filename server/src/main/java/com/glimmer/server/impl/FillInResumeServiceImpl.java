@@ -12,10 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-
 /**
  * 填写简历信息的服务层类
  */
@@ -29,6 +25,7 @@ public class FillInResumeServiceImpl implements FillInResumeService {
 
 
     //填写简历基本信息service
+    @Override
     public void FillInResumeBaseInfo(BaseInfo baseInfo) {
         log.info("填写简历基本信息service");
         //判断填写的信息是否为空
@@ -116,6 +113,18 @@ public class FillInResumeServiceImpl implements FillInResumeService {
         fillInResumeMapper.fillInResumeSocialActInfo(socialactInfo, idUtils.getId());
     }
 
+    //填写单个工作经历
+    public void FillInResumeWorkExperienceInfo(WorkExperienceEntity workExperienceEntity, Integer foreignKey){
+        if (workExperienceEntity.getCompanyName() == null
+                || workExperienceEntity.getPositionName() == null
+                || workExperienceEntity.getWorkStartTime() == null
+                ||workExperienceEntity.getWorkEndTime()==null
+                || workExperienceEntity.getWorkDetail() == null) {
+            throw new ResumeWorkExperienceException("工作经历信息为null");
+        }
+
+    }
+
     //填写简历工作经历信息service
     @Override
     public void FillInResumeWorkExperienceInfo(WorkExperienceInfo workExperienceInfo) {
@@ -127,17 +136,20 @@ public class FillInResumeServiceImpl implements FillInResumeService {
 
         for (int i = 0; i < experience.length; i++) {
             workExperienceEntity = experience[i];
-
-            if (workExperienceEntity.getCompanyName() == null
-                    || workExperienceEntity.getPositionName() == null
-                    || workExperienceEntity.getWorkStartTime() == null
-                    ||workExperienceEntity.getWorkEndTime()==null
-                    || workExperienceEntity.getWorkDetail() == null) {
-                throw new ResumeWorkExperienceException("工作经历信息为null");
-            }
-
-            fillInResumeMapper.fillInResumeWorkExperienceInfo(workExperienceEntity, foreignKey);
+            this.FillInResumeWorkExperienceInfo(workExperienceEntity,foreignKey);
         }
+    }
+
+
+    //填写单个项目经历
+    public void FillInResumeProjectExperienceInfo(ProjectInfo projectInfo, Integer foreignKey) {
+        if (projectInfo.getProjectName() == null
+                || projectInfo.getProjectPostion() == null
+                || projectInfo.getProjectStartTime() == null
+                || projectInfo.getProjectDetail() == null) {
+            throw new ResumeProjectExperienceException("项目经历信息为null");
+        }
+
     }
 
     //填写简历项目经历信息service
@@ -151,15 +163,7 @@ public class FillInResumeServiceImpl implements FillInResumeService {
 
         for (int i = 0; i < experience.length; i++) {
             projectInfo = experience[i];
-
-            if (projectInfo.getProjectName() == null
-                    || projectInfo.getProjectPostion() == null
-                    || projectInfo.getProjectStartTime() == null
-                    || projectInfo.getProjectDetail() == null) {
-                throw new ResumeProjectExperienceException("项目经历信息为null");
-            }
-
-            fillInResumeMapper.fillInResumeProjectExperienceInfo(projectInfo, foreignKey);
+            this.FillInResumeProjectExperienceInfo(projectInfo,foreignKey);
         }
     }
 

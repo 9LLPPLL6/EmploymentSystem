@@ -14,6 +14,7 @@ import java.io.Serializable;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ClubInfo implements Serializable {
+    private Integer id;
     @JsonProperty("club_name")//将前端的下划线转为驼峰
     private String clubName;
     @JsonProperty("club_start_time")

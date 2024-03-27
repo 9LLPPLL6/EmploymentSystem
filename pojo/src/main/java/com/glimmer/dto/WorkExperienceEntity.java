@@ -14,6 +14,7 @@ import java.io.Serializable;
 @AllArgsConstructor
 @NoArgsConstructor
 public class WorkExperienceEntity implements Serializable {
+    private Integer id;
     @JsonProperty("company_name")
     private String companyName;
     @JsonProperty("position_name")

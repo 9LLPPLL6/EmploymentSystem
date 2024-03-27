@@ -2,9 +2,7 @@ package com.glimmer.mapper;
 
 
 
-import com.glimmer.dto.BaseInfo;
-import com.glimmer.dto.EducationInfo;
-import com.glimmer.dto.ProjectExperienceInfo;
+import com.glimmer.dto.*;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
@@ -19,15 +17,45 @@ public interface AskMapper {
     @Select("select * from education_info where foreign_key = #{id}")
     List<EducationInfo> AskEducationHistory(int id);
 
-    @Select("select u.*,u2.*,u3.* from scholarship_info as u left join employment_system.club_experience_info u2 on u.foreign_key = u2.id left join employment_system.stu_position_info u3 on u3.id = u.foreign_key left join employment_system.social_act_info u4 on u4.id = u.foreign_key where u.foreign_key = #{id}")
-    List<EducationInfo> AskSchoolHistory(int id);
-
     @Select("select * from project_experience_info where foreign_key = #{id}")
     List<ProjectExperienceInfo> AskProjectHistory(int id);
 
     @Select("select * from work_experience_info where foreign_key = #{id}")
-    List<ProjectExperienceInfo> AskWorkHistory(int id);
+    List<WorkExperienceInfo> AskWorkHistory(int id);
 
-    @Select("select * from base_info where foreign_key = #{id} and id = (select MAX(id) from base_info)")
-    BaseInfo AskNewestBaseHistory(int id);
+    @Select("select * from club_experience_info where foreign_key = #{id}")
+    List<ClubInfo> AskClubHistory(int id);
+
+    @Select("select * from stu_position_info where foreign_key = #{id}")
+    List<PositionInfo> AskPositionHistory(int id);
+
+    @Select("select * from scholarship_info where foreign_key = #{id}")
+    List<ScholarshipInfo> AskScholarshipHistory(int id);
+
+    @Select("select * from social_act_info where foreign_key = #{id}")
+    List<SocialactInfo> AskSocialActHistory(int id);
+
+    @Select("select * from base_info where id = #{id}")
+    EducationInfo AskLatestEducationHistory(Integer integer);
+
+    @Select("select * from base_info where id = #{id}")
+    BaseInfo AskLatestBaseHistory(int id);
+
+    @Select("select * from project_experience_info where id = #{id}")
+    ProjectExperienceInfo AskLatestProjectHistory(int id);
+
+    @Select("select * from work_experience_info where id = #{id}")
+    WorkExperienceInfo AskLatestWorkHistory(int id);
+
+    @Select("select * from club_experience_info where id = #{id}")
+    ClubInfo AskLatestClubHistory(int id);
+
+    @Select("select * from stu_position_info where id = #{id}")
+    PositionInfo AskLatestPositionHistory(int id);
+
+    @Select("select * from scholarship_info where id = #{id}")
+    ScholarshipInfo AskLatestScholarshipHistory(int id);
+
+    @Select("select * from social_act_info where id = #{id}")
+    SocialactInfo AskLatestSocialActHistory(int id);
 }

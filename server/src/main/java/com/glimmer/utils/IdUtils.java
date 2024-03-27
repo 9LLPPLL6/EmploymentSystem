@@ -10,6 +10,7 @@ import jakarta.annotation.Resource;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.springframework.web.context.request.RequestContextHolder;
@@ -48,7 +49,7 @@ public class IdUtils {
         User user = new User();
         user.setUsername((String) claims.get("username"));
         user.setPassword((String) claims.get("password"));
-        Integer id = cacheUtils.queryWithLogicalExpire(CACHE_USER_KEY, user, Integer.class, User::getId, TTL, TimeUnit.MINUTES);
+        Integer id = cacheUtils.queryWithLogicalExpire(CACHE_USER_KEY, user, Integer.class, idMapper::selectId, TTL, TimeUnit.MINUTES);
 
         if(id == null){
             //返回空值说明数据不存在

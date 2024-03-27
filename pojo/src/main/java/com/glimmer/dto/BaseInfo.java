@@ -13,6 +13,7 @@ import java.io.Serializable;
 @AllArgsConstructor
 @NoArgsConstructor
 public class BaseInfo implements Serializable {
+    private Integer id;
     private Integer gender;
     private String phone;
     private String email;

@@ -74,7 +74,7 @@ public class CacheUtils {
     }
 
     /**
-     * 解决缓存穿透问题
+     * 解决缓存击穿问题
      * @param keyPrefix
      * @param selector
      * @param type

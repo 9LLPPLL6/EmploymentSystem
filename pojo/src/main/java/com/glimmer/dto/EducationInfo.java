@@ -13,6 +13,7 @@ import java.io.Serializable;
 @AllArgsConstructor
 @NoArgsConstructor
 public class EducationInfo implements Serializable {
+    private Integer id;
     private String school;
     private String major;
     private String degree;
