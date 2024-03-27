@@ -2,7 +2,6 @@ package com.glimmer.controller.interactFront;
 
 import com.glimmer.dto.*;
 import com.glimmer.result.Result;
-import com.glimmer.server.impl.FillInResumeServiceImpl;
 import com.glimmer.vo.ResumeUrlVo;
 import com.glimmer.vo.StatusVo;
 import lombok.extern.slf4j.Slf4j;

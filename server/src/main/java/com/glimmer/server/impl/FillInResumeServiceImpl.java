@@ -5,16 +5,14 @@ import com.glimmer.entity.PdfUrl;
 import com.glimmer.exception.*;
 import com.glimmer.mapper.FillInResumeMapper;
 import com.glimmer.server.FillInResumeService;
+import com.glimmer.utils.DeleteResumePdf;
 import com.glimmer.utils.IdUtils;
 import com.glimmer.utils.UploadFile;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
-
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
 
 /**
  * 填写简历信息的服务层类
@@ -29,6 +27,7 @@ public class FillInResumeServiceImpl implements FillInResumeService {
 
 
     //填写简历基本信息service
+    @Transactional
     public void FillInResumeBaseInfo(BaseInfo baseInfo) {
         log.info("填写简历基本信息service");
         //判断填写的信息是否为空
@@ -38,6 +37,9 @@ public class FillInResumeServiceImpl implements FillInResumeService {
                 || baseInfo.getIdentity() == null) {
             throw new ResumeBaseInfoFillException("简历基本信息添加失败");
         }
+
+        //删除之前的信息
+        fillInResumeMapper.deleteResumeBaseInfo(idUtils.getId());
 
         //在数据库插入数据
         fillInResumeMapper.fillInResumeBaseInfo(baseInfo, idUtils.getId());
@@ -165,6 +167,7 @@ public class FillInResumeServiceImpl implements FillInResumeService {
 
     //上传简历PDF
     @Override
+    @Transactional
     public void UploadPdf(MultipartFile multipartFile) {
         log.info("上传简历PDF service");
 
@@ -172,6 +175,15 @@ public class FillInResumeServiceImpl implements FillInResumeService {
         if (pdfUrl == null) {
             throw new PdfNullException("简历PDF的URL为null");
         } else {
+            //将远端oss的pdf文件删除
+            PdfUrl[] pdfUrls = fillInResumeMapper.getResumePdfUrl(idUtils.getId());
+            for (int i = 0; i < pdfUrls.length; i++) {
+                String url = pdfUrls[i].getUrl();
+                DeleteResumePdf.deletePdf(url);
+            }
+            //删除数据库的相关信息
+            fillInResumeMapper.deleteResumeUrl(idUtils.getId());
+            //插入新信息
             fillInResumeMapper.saveResumeUrl(pdfUrl, idUtils.getId());
 
         }
