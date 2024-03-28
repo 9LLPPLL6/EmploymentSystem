@@ -9,6 +9,7 @@ import com.glimmer.utils.IdUtils;
 import com.glimmer.utils.UploadFile;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CachePut;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -26,7 +27,8 @@ public class FillInResumeServiceImpl implements FillInResumeService {
 
     //填写简历基本信息service
     @Override
-    public void FillInResumeBaseInfo(BaseInfo baseInfo) {
+    @CachePut(cacheNames = "baseInfoCache", key = "result.id")
+    public BaseInfo FillInResumeBaseInfo(BaseInfo baseInfo) {
         log.info("填写简历基本信息service");
         //判断填写的信息是否为空
         if (baseInfo.getEmail() == null
@@ -38,11 +40,13 @@ public class FillInResumeServiceImpl implements FillInResumeService {
 
         //在数据库插入数据
         fillInResumeMapper.fillInResumeBaseInfo(baseInfo, idUtils.getId());
+        return baseInfo;
     }
 
     //填写简历教育信息service
     @Override
-    public void FillInResumeEducationInfo(EducationInfo educationInfo) {
+    @CachePut(cacheNames = "educationInfoCache", key = "result.id")
+    public EducationInfo FillInResumeEducationInfo(EducationInfo educationInfo) {
         log.info("填写简历教育信息service");
         //判断信息是否为null
         if (educationInfo.getDegree() == null
@@ -52,11 +56,13 @@ public class FillInResumeServiceImpl implements FillInResumeService {
         }
 
         fillInResumeMapper.fillInResumeEducationInfo(educationInfo, idUtils.getId());
+        return educationInfo;
     }
 
     //填写简历社团在校信息service
     @Override
-    public void FillInResumeClubInfo(ClubInfo clubInfo) {
+    @CachePut(cacheNames = "clubInfoCache", key = "result.id")
+    public ClubInfo FillInResumeClubInfo(ClubInfo clubInfo) {
         log.info("填写简历社团在校信息service");
 
         if (clubInfo.getClubName() == null
@@ -67,11 +73,13 @@ public class FillInResumeServiceImpl implements FillInResumeService {
         }
 
         fillInResumeMapper.fillInResumeClubInfo(clubInfo, idUtils.getId());
+        return clubInfo;
     }
 
     //填写简历学生职务信息service
     @Override
-    public void FillInResumePositionInfo(PositionInfo positionInfo) {
+    @CachePut(cacheNames = "positionInfoCache", key = "result.id")
+    public PositionInfo FillInResumePositionInfo(PositionInfo positionInfo) {
         log.info("填写简历学生职务信息service");
 
         if (positionInfo.getStuPosition() == null
@@ -82,11 +90,13 @@ public class FillInResumeServiceImpl implements FillInResumeService {
         }
 
         fillInResumeMapper.fillInResumePositionInfo(positionInfo, idUtils.getId());
+        return positionInfo;
     }
 
     //填写简历奖学金信息service
     @Override
-    public void FillInResumeScholarshipInfo(ScholarshipInfo scholarshipInfo) {
+    @CachePut(cacheNames = "scholarshipInfoCache", key = "result.id")
+    public ScholarshipInfo FillInResumeScholarshipInfo(ScholarshipInfo scholarshipInfo) {
         log.info("填写简历奖学金信息service");
 
         if (scholarshipInfo.getScholarship() == null
@@ -96,11 +106,13 @@ public class FillInResumeServiceImpl implements FillInResumeService {
         }
 
         fillInResumeMapper.fillInResumeScholarshipInfo(scholarshipInfo, idUtils.getId());
+        return scholarshipInfo;
     }
 
     //填写简历社会实践信息service
     @Override
-    public void FillInResumeSocialActInfo(SocialactInfo socialactInfo) {
+    @CachePut(cacheNames = "socialactInfo", key = "result.id")
+    public SocialactInfo FillInResumeSocialActInfo(SocialactInfo socialactInfo) {
         log.info("填写简历社会实践信息service");
 
         if (socialactInfo.getSocialAct() == null
@@ -111,10 +123,12 @@ public class FillInResumeServiceImpl implements FillInResumeService {
         }
 
         fillInResumeMapper.fillInResumeSocialActInfo(socialactInfo, idUtils.getId());
+        return socialactInfo;
     }
 
     //填写单个工作经历
-    public void FillInResumeWorkExperienceInfo(WorkExperienceEntity workExperienceEntity, Integer foreignKey){
+    @CachePut(cacheNames = "workExperienceEntityCache", key = "result.id")
+    public WorkExperienceEntity FillInResumeWorkExperienceInfo(WorkExperienceEntity workExperienceEntity, Integer foreignKey){
         if (workExperienceEntity.getCompanyName() == null
                 || workExperienceEntity.getPositionName() == null
                 || workExperienceEntity.getWorkStartTime() == null
@@ -123,6 +137,8 @@ public class FillInResumeServiceImpl implements FillInResumeService {
             throw new ResumeWorkExperienceException("工作经历信息为null");
         }
 
+        fillInResumeMapper.fillInResumeWorkExperienceInfo(workExperienceEntity, foreignKey);
+        return workExperienceEntity;
     }
 
     //填写简历工作经历信息service
@@ -130,7 +146,7 @@ public class FillInResumeServiceImpl implements FillInResumeService {
     public void FillInResumeWorkExperienceInfo(WorkExperienceInfo workExperienceInfo) {
         log.info("填写简历工作经历信息service");
 
-        WorkExperienceEntity workExperienceEntity = null;
+        WorkExperienceEntity workExperienceEntity;
         WorkExperienceEntity[] experience = workExperienceInfo.getExperience();
         Integer foreignKey = idUtils.getId();
 
@@ -142,7 +158,8 @@ public class FillInResumeServiceImpl implements FillInResumeService {
 
 
     //填写单个项目经历
-    public void FillInResumeProjectExperienceInfo(ProjectInfo projectInfo, Integer foreignKey) {
+    @CachePut(cacheNames = "projectInfoCache", key = "result.id")
+    public ProjectInfo FillInResumeProjectExperienceInfo(ProjectInfo projectInfo, Integer foreignKey) {
         if (projectInfo.getProjectName() == null
                 || projectInfo.getProjectPostion() == null
                 || projectInfo.getProjectStartTime() == null
@@ -150,6 +167,8 @@ public class FillInResumeServiceImpl implements FillInResumeService {
             throw new ResumeProjectExperienceException("项目经历信息为null");
         }
 
+        fillInResumeMapper.fillInResumeProjectExperienceInfo(projectInfo, foreignKey);
+        return projectInfo;
     }
 
     //填写简历项目经历信息service
@@ -157,7 +176,7 @@ public class FillInResumeServiceImpl implements FillInResumeService {
     public void FillInResumeProjectExperienceInfo(ProjectExperienceInfo projectExperienceInfo) {
         log.info("填写简历项目经历信息service");
 
-        ProjectInfo projectInfo = null;
+        ProjectInfo projectInfo;
         ProjectInfo[] experience = projectExperienceInfo.getExperience();
         Integer foreignKey = idUtils.getId();
 

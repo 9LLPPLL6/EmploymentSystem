@@ -10,6 +10,7 @@ import com.glimmer.utils.IdUtils;
 import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -56,9 +57,9 @@ public class AskResumeServiceImpl implements AskResumeService {
     public List<BaseInfo> AskBaseHistory() {return askMapper.AskBaseHistory(idUtils.getId());}
 
     @Override
+    @Cacheable(cacheNames = "baseInfoCache", key = "#id")
     public BaseInfo AskLatestBaseHistory(Integer id) {
-        BaseInfo baseInfo = cacheUtils.queryDataWithPassThrough(CACHE_BASE_KEY, id, BaseInfo.class, askMapper::AskLatestBaseHistory, TTL, TimeUnit.MINUTES);
-        //如果返回空值说明数据不存在
+        BaseInfo baseInfo = askMapper.AskLatestBaseHistory(id);        //如果返回空值说明数据不存在
         if (baseInfo == null){
             throw new BaseException("数据不存在");
         }
@@ -67,8 +68,9 @@ public class AskResumeServiceImpl implements AskResumeService {
     }
 
     @Override
+    @Cacheable(cacheNames = "educationInfoCache", key = "#id")
     public EducationInfo AskLatestEducationHistory(Integer id) {
-        EducationInfo educationInfo = cacheUtils.queryDataWithPassThrough(CACHE_BASE_KEY, id, EducationInfo.class, askMapper::AskLatestEducationHistory, TTL, TimeUnit.MINUTES);
+        EducationInfo educationInfo = askMapper.AskLatestEducationHistory(id);
         //如果返回空值说明数据不存在
         if (educationInfo == null){
             throw new BaseException("数据不存在");
@@ -78,8 +80,9 @@ public class AskResumeServiceImpl implements AskResumeService {
     }
 
     @Override
+    @Cacheable(cacheNames = "clubInfoCache", key = "#id")
     public ClubInfo AskLatestClubHistory(Integer id) {
-        ClubInfo clubInfo = cacheUtils.queryDataWithPassThrough(CACHE_BASE_KEY, id, ClubInfo.class, askMapper::AskLatestClubHistory, TTL, TimeUnit.MINUTES);
+        ClubInfo clubInfo = askMapper.AskLatestClubHistory(id);
         //如果返回空值说明数据不存在
         if (clubInfo == null){
             throw new BaseException("数据不存在");
@@ -89,8 +92,9 @@ public class AskResumeServiceImpl implements AskResumeService {
     }
 
     @Override
+    @Cacheable(cacheNames = "positionInfoCache", key = "#id")
     public PositionInfo AskLatestPositionHistory(Integer id) {
-        PositionInfo positionInfo = cacheUtils.queryDataWithPassThrough(CACHE_BASE_KEY, id, PositionInfo.class, askMapper::AskLatestPositionHistory, TTL, TimeUnit.MINUTES);
+        PositionInfo positionInfo = askMapper.AskLatestPositionHistory(id);
         //如果返回空值说明数据不存在
         if (positionInfo == null){
             throw new BaseException("数据不存在");
@@ -100,8 +104,9 @@ public class AskResumeServiceImpl implements AskResumeService {
     }
 
     @Override
+    @Cacheable(cacheNames = "scholarshipInfoCache", key = "#id")
     public ScholarshipInfo AskLatestScholarshipHistory(Integer id) {
-        ScholarshipInfo scholarshipInfo = cacheUtils.queryDataWithPassThrough(CACHE_BASE_KEY, id, ScholarshipInfo.class, askMapper::AskLatestScholarshipHistory, TTL, TimeUnit.MINUTES);
+        ScholarshipInfo scholarshipInfo = askMapper.AskLatestScholarshipHistory(id);
         //如果返回空值说明数据不存在
         if (scholarshipInfo == null){
             throw new BaseException("数据不存在");
@@ -111,8 +116,9 @@ public class AskResumeServiceImpl implements AskResumeService {
     }
 
     @Override
+    @Cacheable(cacheNames = "socialactInfo", key = "#id")
     public SocialactInfo AskLatestSocialactHistory(Integer id) {
-        SocialactInfo scholarshipInfo = cacheUtils.queryDataWithPassThrough(CACHE_BASE_KEY, id, SocialactInfo.class, askMapper::AskLatestSocialActHistory, TTL, TimeUnit.MINUTES);
+        SocialactInfo scholarshipInfo = askMapper.AskLatestSocialActHistory(id);
         //如果返回空值说明数据不存在
         if (scholarshipInfo == null){
             throw new BaseException("数据不存在");
@@ -122,8 +128,9 @@ public class AskResumeServiceImpl implements AskResumeService {
     }
 
     @Override
+    @Cacheable(cacheNames = "workExperienceEntityCache", key = "#id")
     public WorkExperienceInfo AskLatestWorkHistory(Integer id) {
-        WorkExperienceInfo workExperienceInfo = cacheUtils.queryDataWithPassThrough(CACHE_BASE_KEY, id, WorkExperienceInfo.class, askMapper::AskLatestWorkHistory, TTL, TimeUnit.MINUTES);
+        WorkExperienceInfo workExperienceInfo = askMapper.AskLatestWorkHistory(id);
         //如果返回空值说明数据不存在
         if (workExperienceInfo == null){
             throw new BaseException("数据不存在");
@@ -133,8 +140,9 @@ public class AskResumeServiceImpl implements AskResumeService {
     }
 
     @Override
+    @Cacheable(cacheNames = "projectInfoCache", key = "#id")
     public PositionInfo AskLatestProjectHistory(Integer id) {
-        PositionInfo positionInfo = cacheUtils.queryDataWithPassThrough(CACHE_BASE_KEY, id, PositionInfo.class, askMapper::AskLatestPositionHistory, TTL, TimeUnit.MINUTES);
+        PositionInfo positionInfo = askMapper.AskLatestPositionHistory(id);
         //如果返回空值说明数据不存在
         if (positionInfo == null){
             throw new BaseException("数据不存在");
