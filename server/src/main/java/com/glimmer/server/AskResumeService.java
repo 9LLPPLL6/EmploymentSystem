@@ -25,17 +25,17 @@ public interface AskResumeService {
 
     List<SocialactInfo> AskSocialActHistory();
 
-    EducationInfo AskLatestEducationHistory(Integer id);
+    EducationInfo FindEducationHistory(Integer id);
 
-    ClubInfo AskLatestClubHistory(Integer id);
+    ClubInfo FindClubHistory(Integer id);
 
-    PositionInfo AskLatestPositionHistory(Integer id);
+    PositionInfo FindPositionHistory(Integer id);
 
-    ScholarshipInfo AskLatestScholarshipHistory(Integer id);
+    ScholarshipInfo FindScholarshipHistory(Integer id);
 
-    SocialactInfo AskLatestSocialactHistory(Integer id);
+    SocialactInfo FindSocialactHistory(Integer id);
 
-    WorkExperienceInfo AskLatestWorkHistory(Integer id);
+    WorkExperienceInfo FindWorkHistory(Integer id);
 
-    PositionInfo AskLatestProjectHistory(Integer id);
+    ProjectExperienceInfo FindProjectHistory(Integer id);
 }

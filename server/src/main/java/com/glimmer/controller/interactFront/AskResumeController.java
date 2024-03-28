@@ -102,86 +102,83 @@ public class AskResumeController {
     }
 
     /**
-     * 返回最新的个人基本信息
-     * @return 最新的个人基本信息
+     * 查询个人基本信息
+     * @return 个人基本信息
      */
-    @GetMapping("/resume/latest_base")
-    public Result<BaseInfo> AskLatestBase(Integer id) {
+    @GetMapping("/resume/find_base")
+    public Result<BaseInfo> FindBase(Integer id) {
         log.info("返回个人基本信息");
         return Result.success("成功",askResumeService.AskLatestBaseHistory(id));
     }
 
     /**
-     * 返回最新的教育信息
-     * @return 最新的教育信息
+     * 查询教育信息
+     * @return 教育信息
      */
-    @GetMapping("/resume/latest_education")
-    public Result<EducationInfo> AskLatestEducation(Integer id) {
-        log.info("返回最新教育信息");
-        return Result.success("成功",askResumeService.AskLatestEducationHistory(id));
+    @GetMapping("/resume/find_education")
+    public Result<EducationInfo> FindEducation(Integer id) {
+        log.info("返回教育信息");
+        return Result.success("成功",askResumeService.FindEducationHistory(id));
     }
 
     /**
-     * 返回最新的社团信息
-     * @return 最新的社团信息
+     * 查询社团信息
+     * @return 社团信息
      */
-    @GetMapping("/resume/latest_club")
-    public Result<ClubInfo> AskLatestClub(Integer id) {
-        log.info("返回最新社团信息");
-        return Result.success("成功",askResumeService.AskLatestClubHistory(id));
+    @GetMapping("/resume/find_club")
+    public Result<ClubInfo> FindClub(Integer id) {
+        log.info("返回社团信息");
+        return Result.success("成功",askResumeService.FindClubHistory(id));
     }
 
     /**
-     * 返回最新的学生职位信息
-     * @return 最新的学生职位信息
+     * 查询学生职位信息
+     * @return 学生职位信息
      */
-    @GetMapping("/resume/latest_position")
-    public Result<PositionInfo> AskLatestPosition(Integer id) {
-        log.info("返回最新个人基本信息");
-        return Result.success("成功",askResumeService.AskLatestPositionHistory(id));
+    @GetMapping("/resume/find_position")
+    public Result<PositionInfo> FindPosition(Integer id) {
+        log.info("返回个人基本信息");
+        return Result.success("成功",askResumeService.FindPositionHistory(id));
     }
 
     /**
-     * 返回最新的社会实践信息
-     * @return 最新的奖学金信息
+     * 查询奖学金信息
+     * @return 奖学金信息
      */
-    @GetMapping("/resume/latest_scholarship")
-    public Result<ScholarshipInfo> AskLatestScholarship(Integer id) {
-        log.info("返回最新奖学金信息");
-        return Result.success("成功",askResumeService.AskLatestScholarshipHistory(id));
+    @GetMapping("/resume/find_scholarship")
+    public Result<ScholarshipInfo> FindScholarship(Integer id) {
+        log.info("返回奖学金信息");
+        return Result.success("成功",askResumeService.FindScholarshipHistory(id));
     }
 
     /**
-     * 返回最新的社会实践信息
-     *
-     * @return 最新的社会实践信息
+     * 查询社会实践信息
+     * @return 查询社会实践信息
      */
-    @GetMapping("/resume/latest_socialact")
-    public Result<SocialactInfo> AskLatestSocialAct(Integer id) {
-        log.info("返回最新社会实践信息");
-        return Result.success("成功",askResumeService.AskLatestSocialactHistory(id));
+    @GetMapping("/resume/find_socialact")
+    public Result<SocialactInfo> FindSocialAct(Integer id) {
+        log.info("返回社会实践信息");
+        return Result.success("成功",askResumeService.FindSocialactHistory(id));
     }
 
     /**
-     * 返回最新的工作信息
-     *
-     * @return 最新的工作信息
+     * 查询工作信息
+     * @return 工作信息
      */
-    @GetMapping("/resume/latest_work")
-    public Result<WorkExperienceInfo> AskLatestWork(Integer id) {
-        log.info("返回最新个人基本信息");
-        return Result.success("成功",askResumeService.AskLatestWorkHistory(id));
+    @GetMapping("/resume/find_work")
+    public Result<WorkExperienceInfo> FindWork(Integer id) {
+        log.info("返回个人基本信息");
+        return Result.success("成功",askResumeService.FindWorkHistory(id));
     }
 
     /**
-     * 返回最新的项目信息
-     *
-     * @return 最新的项目信息
+     * 查询项目信息
+     * @return 项目信息
      */
-    @GetMapping("/resume/latest_project")
-    public Result<PositionInfo> AskLatestProject(Integer id) {
-        log.info("返回最新个人基本信息");
-        return Result.success("成功",askResumeService.AskLatestProjectHistory(id));
+    @GetMapping("/resume/find_project")
+    public Result<ProjectExperienceInfo> FindProject(Integer id) {
+        log.info("返回个人基本信息");
+        return Result.success("成功",askResumeService.FindProjectHistory(id));
     }
 
 }

@@ -36,26 +36,26 @@ public interface AskMapper {
     List<SocialactInfo> AskSocialActHistory(int id);
 
     @Select("select * from base_info where id = #{id}")
-    EducationInfo AskLatestEducationHistory(Integer integer);
+    EducationInfo FindEducationHistory(Integer integer);
 
     @Select("select * from base_info where id = #{id}")
-    BaseInfo AskLatestBaseHistory(int id);
+    BaseInfo FindBaseHistory(int id);
 
     @Select("select * from project_experience_info where id = #{id}")
-    ProjectExperienceInfo AskLatestProjectHistory(int id);
+    ProjectExperienceInfo FindProjectHistory(int id);
 
     @Select("select * from work_experience_info where id = #{id}")
-    WorkExperienceInfo AskLatestWorkHistory(int id);
+    WorkExperienceInfo FindWorkHistory(int id);
 
     @Select("select * from club_experience_info where id = #{id}")
-    ClubInfo AskLatestClubHistory(int id);
+    ClubInfo FindClubHistory(int id);
 
     @Select("select * from stu_position_info where id = #{id}")
-    PositionInfo AskLatestPositionHistory(int id);
+    PositionInfo FindPositionHistory(int id);
 
     @Select("select * from scholarship_info where id = #{id}")
-    ScholarshipInfo AskLatestScholarshipHistory(int id);
+    ScholarshipInfo FindScholarshipHistory(int id);
 
     @Select("select * from social_act_info where id = #{id}")
-    SocialactInfo AskLatestSocialActHistory(int id);
+    SocialactInfo FindSocialActHistory(int id);
 }
