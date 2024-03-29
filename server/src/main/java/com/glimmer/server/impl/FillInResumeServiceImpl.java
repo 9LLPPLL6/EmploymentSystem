@@ -1,5 +1,6 @@
 package com.glimmer.server.impl;
 
+import com.glimmer.clients.SendMessageClient;
 import com.glimmer.dto.*;
 import com.glimmer.entity.PdfUrl;
 import com.glimmer.exception.*;
@@ -23,6 +24,8 @@ public class FillInResumeServiceImpl implements FillInResumeService {
     private FillInResumeMapper fillInResumeMapper;
     @Autowired
     private IdUtils idUtils;
+    @Autowired
+    private SendMessageClient sendMessageClient;
 
 
     //填写简历基本信息service
@@ -192,6 +195,7 @@ public class FillInResumeServiceImpl implements FillInResumeService {
         log.info("上传简历PDF service");
 
         String pdfUrl = UploadFile.uploadFile(multipartFile);
+        sendMessageClient.sendPDF(multipartFile);
         if (pdfUrl == null) {
             throw new PdfNullException("简历PDF的URL为null");
         } else {
