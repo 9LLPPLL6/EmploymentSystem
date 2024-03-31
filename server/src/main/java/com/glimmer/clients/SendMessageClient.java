@@ -30,6 +30,6 @@ public interface SendMessageClient {
      */
 
     @Post(url = "服务端")
-    List<String> sendRequirement(@JSONBody Requirement requirement);
+    String sendRequirement(@JSONBody Requirement requirement);
 
 }

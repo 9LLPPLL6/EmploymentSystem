@@ -7,23 +7,23 @@ import com.glimmer.dto.*;
 import java.util.List;
 
 public interface AskResumeService {
-    List<BaseInfo> AskBaseHistory();
+    BaseInfo AskBaseHistory();
 
-    List<EducationInfo> AskEducationHistory();
+    EducationInfo AskEducationHistory();
 
-    List<ProjectExperienceInfo> AskProjectHistory();
+    ProjectExperienceInfo AskProjectHistory();
 
-    List<WorkExperienceInfo> AskWorkHistory();
+    WorkExperienceInfo AskWorkHistory();
 
     BaseInfo AskLatestBaseHistory(Integer id);
 
-    List<ClubInfo> AskClubHistory();
+    ClubInfo AskClubHistory();
 
-    List<PositionInfo> AskPositionHistory();
+    PositionInfo AskPositionHistory();
 
-    List<ScholarshipInfo> AskScholarshipHistory();
+    ScholarshipInfo AskScholarshipHistory();
 
-    List<SocialactInfo> AskSocialActHistory();
+    SocialactInfo AskSocialActHistory();
 
     EducationInfo FindEducationHistory(Integer id);
 

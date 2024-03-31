@@ -19,7 +19,7 @@ public interface FillInResumeMapper {
      * @param baseInfo
      * @param foreignKey
      */
-    @Insert("insert into base_info(gender, phone, email, identity, foreign_key) values (#{baseInfo.gender},#{baseInfo.phone},#{baseInfo.email},#{baseInfo.identity},#{foreignKey})")
+    @Insert("insert into personal_info(gender, phone, email, identity, foreign_key) values (#{baseInfo.gender},#{baseInfo.phone},#{baseInfo.email},#{baseInfo.identity},#{foreignKey})")
     @Options(useGeneratedKeys = true,keyProperty = "id")
     public void fillInResumeBaseInfo(@Param("baseInfo") BaseInfo baseInfo, @Param("foreignKey") Integer foreignKey);
 

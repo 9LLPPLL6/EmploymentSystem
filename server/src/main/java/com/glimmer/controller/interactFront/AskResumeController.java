@@ -137,7 +137,7 @@ public class AskResumeController {
      */
     @GetMapping("/resume/find_position")
     public Result<PositionInfo> FindPosition(Integer id) {
-        log.info("返回个人基本信息");
+        log.info("返回个人职位信息");
         return Result.success("成功",askResumeService.FindPositionHistory(id));
     }
 
@@ -167,7 +167,7 @@ public class AskResumeController {
      */
     @GetMapping("/resume/find_work")
     public Result<WorkExperienceInfo> FindWork(Integer id) {
-        log.info("返回个人基本信息");
+        log.info("返回工作信息");
         return Result.success("成功",askResumeService.FindWorkHistory(id));
     }
 
@@ -177,7 +177,7 @@ public class AskResumeController {
      */
     @GetMapping("/resume/find_project")
     public Result<ProjectExperienceInfo> FindProject(Integer id) {
-        log.info("返回个人基本信息");
+        log.info("返回项目信息");
         return Result.success("成功",askResumeService.FindProjectHistory(id));
     }
 

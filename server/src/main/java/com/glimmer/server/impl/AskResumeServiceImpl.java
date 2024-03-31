@@ -5,9 +5,7 @@ import com.glimmer.dto.*;
 import com.glimmer.exception.BaseException;
 import com.glimmer.mapper.AskMapper;
 import com.glimmer.server.AskResumeService;
-import com.glimmer.utils.CacheUtils;
 import com.glimmer.utils.IdUtils;
-import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
@@ -25,32 +23,96 @@ public class AskResumeServiceImpl implements AskResumeService {
     @Autowired
     private IdUtils idUtils;
 
-    @Resource
-    CacheUtils cacheUtils;
 
     @Override
-    public List<ClubInfo> AskClubHistory() {return askMapper.AskClubHistory(idUtils.getId());}
+    @Cacheable(cacheNames = "clubInfoCache", key = "#result.id")
+    public ClubInfo AskClubHistory() {
+        ClubInfo clubInfo = askMapper.AskClubHistory(idUtils.getId());
+        //如果返回空值说明数据不存在
+        if (clubInfo == null){
+            throw new BaseException("数据不存在");
+        }
+        return clubInfo;
+    }
 
     @Override
-    public List<PositionInfo> AskPositionHistory() {return askMapper.AskPositionHistory(idUtils.getId());}
+    @Cacheable(cacheNames = "positionInfoCache", key = "#result.id")
+    public PositionInfo AskPositionHistory() {
+        PositionInfo positionInfo = askMapper.AskPositionHistory(idUtils.getId());
+        //如果返回空值说明数据不存在
+        if (positionInfo == null){
+            throw new BaseException("数据不存在");
+        }
+
+        return positionInfo;
+    }
 
     @Override
-    public List<ScholarshipInfo> AskScholarshipHistory() {return askMapper.AskScholarshipHistory(idUtils.getId());}
+    @Cacheable(cacheNames = "scholarshipInfoCache", key = "#result.id")
+    public ScholarshipInfo AskScholarshipHistory() {
+        ScholarshipInfo scholarshipInfo = askMapper.AskScholarshipHistory(idUtils.getId());
+        //如果返回空值说明数据不存在
+        if (scholarshipInfo == null){
+            throw new BaseException("数据不存在");
+        }
+
+        return scholarshipInfo;
+    }
 
     @Override
-    public List<SocialactInfo> AskSocialActHistory() {return askMapper.AskSocialActHistory(idUtils.getId());}
+    @Cacheable(cacheNames = "socialactInfo", key = "#result.id")
+    public SocialactInfo AskSocialActHistory() {
+        SocialactInfo socialactInfo = askMapper.AskSocialActHistory(idUtils.getId());
+        //如果返回空值说明数据不存在
+        if (socialactInfo == null){
+            throw new BaseException("数据不存在");
+        }
+        return socialactInfo;
+    }
 
     @Override
-    public List<EducationInfo> AskEducationHistory() {return askMapper.AskEducationHistory(idUtils.getId());}
+    @Cacheable(cacheNames = "educationInfoCache", key = "#result.id")
+    public EducationInfo AskEducationHistory() {
+        EducationInfo educationInfo = askMapper.AskEducationHistory(idUtils.getId());
+        //如果返回空值说明数据不存在
+        if (educationInfo == null){
+            throw new BaseException("数据不存在");
+        }
+        return educationInfo;
+    }
 
     @Override
-    public List<ProjectExperienceInfo> AskProjectHistory() {return askMapper.AskProjectHistory(idUtils.getId());}
+    @Cacheable(cacheNames = "projectInfoCache", key = "#result.experience.id")
+    public ProjectExperienceInfo AskProjectHistory() {
+        ProjectExperienceInfo projectExperienceInfo = askMapper.AskProjectHistory(idUtils.getId());
+        //如果返回空值说明数据不存在
+        if (projectExperienceInfo == null){
+            throw new BaseException("数据不存在");
+        }
+        return projectExperienceInfo;
+    }
 
     @Override
-    public List<WorkExperienceInfo> AskWorkHistory() {return askMapper.AskWorkHistory(idUtils.getId());}
+    @Cacheable(cacheNames = "workExperienceEntityCache", key = "#result.experience.id")
+    public WorkExperienceInfo AskWorkHistory() {
+        WorkExperienceInfo workExperienceInfo = askMapper.AskWorkHistory(idUtils.getId());
+        //如果返回空值说明数据不存在
+        if (workExperienceInfo == null){
+            throw new BaseException("数据不存在");
+        }
+        return workExperienceInfo;
+    }
 
     @Override
-    public List<BaseInfo> AskBaseHistory() {return askMapper.AskBaseHistory(idUtils.getId());}
+    @Cacheable(cacheNames = "baseInfoCache", key = "#result.id")
+    public BaseInfo AskBaseHistory() {
+        BaseInfo baseInfo = askMapper.AskBaseHistory(idUtils.getId());        //如果返回空值说明数据不存在
+        if (baseInfo == null){
+            throw new BaseException("数据不存在");
+        }
+
+        return baseInfo;
+    }
 
     @Override
     @Cacheable(cacheNames = "baseInfoCache", key = "#id")

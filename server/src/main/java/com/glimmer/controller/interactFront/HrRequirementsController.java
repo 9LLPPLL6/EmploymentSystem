@@ -20,7 +20,7 @@ public class HrRequirementsController {
 
     @PostMapping("/requirement")
     Result<StatusVo> UpLoadRequirement(@RequestBody Requirement requirement){
-        List<String> recommendation = requirementService.sendRequirement(requirement);
+        String recommendation = requirementService.sendRequirement(requirement);
         if (recommendation == null){
             StatusVo statusVo = StatusVo.builder()
                     .status(0)
@@ -31,7 +31,7 @@ public class HrRequirementsController {
 
         StatusVo statusVo = StatusVo.builder()
                 .status(1)
-                .message(recommendation.toString())
+                .message(recommendation)
                 .build();
         return Result.success("成功",statusVo);
     }
