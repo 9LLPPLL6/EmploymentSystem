@@ -14,6 +14,7 @@ import java.io.Serializable;
 @NoArgsConstructor
 @AllArgsConstructor
 public class PositionInfo implements Serializable {
+    private Integer id;
     @JsonProperty("stu_position")
     private String stuPosition;
     @JsonProperty("stu_start_time")

@@ -14,6 +14,7 @@ import java.io.Serializable;
 @AllArgsConstructor
 @NoArgsConstructor
 public class SocialactInfo implements Serializable {
+    private Integer id;
     @JsonProperty("social_act")
     private String socialAct;
     @JsonProperty("social_start_time")

@@ -5,7 +5,7 @@ spring:
   profiles:
     active: dev #设为开发环境
   main:
-    allow-cirular-references: true #开启循环依赖
+    allow-circular-references: true
 
   datasource:
     #设置数据库连接
@@ -17,32 +17,21 @@ spring:
     multipart:
       max-file-size: 4000MB
       max-request-size: 6000MB
+  data:
+    redis:
+      port: 6379
+      host: localhost
+      lettuce:
+        pool:
+          max-wait: 100
+          max-active: 8
+          max-idle: 8
+          min-idle: 0
+      password:
+
 mybatis:
   mapper-locations: classpath:mapper/*.xml
   type-aliases-package: com.glimmer.entity
   configuration:
     log-impl: org.apache.ibatis.logging.commons.JakartaCommonsLoggingImpl
     map-underscore-to-camel-case: true #开启驼峰命名
-
-#feign:
-#  client:
-#    capabilityEvaluationServer: #能力评价机器学习服务
-#      url: localhost
-#      port: 15213
-#    jobRecommendation: #岗位推荐机器学习服务
-#      url: localhost
-#      port: 15213
-#    config:
-#      default: #全局配置
-#        loggerLevel: BASIC #日志级别
-#  httpclient:
-#    enable: true #开启feign对httpclient的支持
-#    max-connections: 200 #最大连接数
-#    max-connections-per-route: 50 #每个路径的最大连接数
-forest:
-  max-connections: 1000        # 连接池最大连接数
-  connect-timeout: 3000        # 连接超时时间，单位为毫秒
-  read-timeout: 3000           # 数据读取超时时间，单位为毫秒
-
-
-

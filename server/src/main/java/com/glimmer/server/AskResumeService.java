@@ -2,20 +2,40 @@ package com.glimmer.server;
 
 
 
-import com.glimmer.dto.BaseInfo;
-import com.glimmer.dto.EducationInfo;
-import com.glimmer.dto.ProjectExperienceInfo;
+import com.glimmer.dto.*;
 
 import java.util.List;
 
 public interface AskResumeService {
-    List<BaseInfo> AskBaseHistory();
+    BaseInfo AskBaseHistory();
 
-    List<EducationInfo> AskEducationHistory();
+    EducationInfo AskEducationHistory();
 
-    List<EducationInfo> AskSchoolHistory();
+    ProjectExperienceInfo AskProjectHistory();
 
-    List<ProjectExperienceInfo> AskProjectHistory();
+    WorkExperienceInfo AskWorkHistory();
 
-    List<ProjectExperienceInfo> AskWorkHistory();
+    BaseInfo AskLatestBaseHistory(Integer id);
+
+    ClubInfo AskClubHistory();
+
+    PositionInfo AskPositionHistory();
+
+    ScholarshipInfo AskScholarshipHistory();
+
+    SocialactInfo AskSocialActHistory();
+
+    EducationInfo FindEducationHistory(Integer id);
+
+    ClubInfo FindClubHistory(Integer id);
+
+    PositionInfo FindPositionHistory(Integer id);
+
+    ScholarshipInfo FindScholarshipHistory(Integer id);
+
+    SocialactInfo FindSocialactHistory(Integer id);
+
+    WorkExperienceInfo FindWorkHistory(Integer id);
+
+    ProjectExperienceInfo FindProjectHistory(Integer id);
 }

@@ -14,6 +14,7 @@ import java.io.Serializable;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ScholarshipInfo implements Serializable {
+    private Integer id;
     private String scholarship;
     @JsonProperty("scholarship_time")
     private String scholarshipTime;

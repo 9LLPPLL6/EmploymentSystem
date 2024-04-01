@@ -3,6 +3,11 @@ package com.glimmer.mapper;
 import com.glimmer.dto.*;
 import com.glimmer.entity.PdfUrl;
 import org.apache.ibatis.annotations.*;
+import com.glimmer.utils.IdUtils;
+import org.apache.ibatis.annotations.*;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CachePut;
+import org.springframework.format.annotation.DateTimeFormat;
 
 /**
  * 填写简历信息的mapper层接口
@@ -16,6 +21,7 @@ public interface FillInResumeMapper {
      * @param foreignKey
      */
     @Insert("insert into personal_info(gender, phone, email, identity, foreign_key) values (#{baseInfo.gender},#{baseInfo.phone},#{baseInfo.email},#{baseInfo.identity},#{foreignKey})")
+    @Options(useGeneratedKeys = true,keyProperty = "id")
     public void fillInResumeBaseInfo(@Param("baseInfo") BaseInfo baseInfo, @Param("foreignKey") Integer foreignKey);
 
     /**
@@ -30,6 +36,7 @@ public interface FillInResumeMapper {
      * @param foreignKey
      */
     @Insert("insert into education_info(school, major, degree, grade, `rank`, nature, foreign_key) values (#{educationInfo.school},#{educationInfo.major},#{educationInfo.degree},#{educationInfo.grade},#{educationInfo.rank},#{educationInfo.nature}, #{foreignKey})")
+    @Options(useGeneratedKeys = true,keyProperty = "id")
     public void fillInResumeEducationInfo(@Param("educationInfo") EducationInfo educationInfo,@Param("foreignKey") Integer foreignKey);
 
     /**
@@ -45,6 +52,7 @@ public interface FillInResumeMapper {
      * @param foreignKey
      */
     @Insert("insert into club_experience_info(club_name, club_start_time, club_end_time, club_detail,position, foreign_key) values (#{clubInfo.clubName}, #{clubInfo.clubStartTime}, #{clubInfo.clubEndTime}, #{clubInfo.clubDetail},#{clubInfo.position}, #{foreignKey})")
+    @Options(useGeneratedKeys = true,keyProperty = "id")
     public void fillInResumeClubInfo(@Param("clubInfo") ClubInfo clubInfo,@Param("foreignKey") Integer foreignKey);
 
     /**
@@ -60,6 +68,7 @@ public interface FillInResumeMapper {
      * @param foreignKey
      */
     @Insert("insert into stu_position_info(stu_position, stu_start_time, stu_end_time, stu_detail,foreign_key) values (#{positionInfo.stuPosition}, #{positionInfo.stuStartTime}, #{positionInfo.stuEndTime}, #{positionInfo.stuDetail}, #{foreignKey})")
+    @Options(useGeneratedKeys = true,keyProperty = "id")
     public void fillInResumePositionInfo(@Param("positionInfo") PositionInfo positionInfo,@Param("foreignKey") Integer foreignKey);
 
     /**
@@ -74,6 +83,7 @@ public interface FillInResumeMapper {
      * @param foreignKey
      */
     @Insert("insert into scholarship_info(scholarship, scholarship_time, scholarship_detail, foreign_key) values (#{scholarshipInfo.scholarship}, #{scholarshipInfo.scholarshipTime}, #{scholarshipInfo.scholarshipDetail}, #{foreignKey})")
+    @Options(useGeneratedKeys = true,keyProperty = "id")
     public void fillInResumeScholarshipInfo(@Param("scholarshipInfo") ScholarshipInfo scholarshipInfo, @Param("foreignKey") Integer foreignKey);
 
     /**
@@ -89,6 +99,7 @@ public interface FillInResumeMapper {
      * @param foreignKey
      */
     @Insert("insert into social_act_info(social_act, act_start_time, act_end_time, act_detail, foreign_key) values (#{socialactInfo.socialAct}, #{socialactInfo.socialStartTime}, #{socialactInfo.socialEndTime}, #{socialactInfo.socialDetail}, #{foreignKey})")
+    @Options(useGeneratedKeys = true,keyProperty = "id")
     public void fillInResumeSocialActInfo(@Param("socialactInfo") SocialactInfo socialactInfo, @Param("foreignKey") Integer foreignKey);
 
     /**
@@ -103,6 +114,7 @@ public interface FillInResumeMapper {
      * @param foreignKey
      */
     @Insert("insert into work_experience_info(company_name, work_position ,work_start_time, work_end_time, work_detail, foreign_key) values (#{workExperienceEntity.companyName}, #{workExperienceEntity.positionName}, #{workExperienceEntity.workStartTime}, #{workExperienceEntity.workEndTime}, #{workExperienceEntity.workDetail}, #{foreignKey})")
+    @Options(useGeneratedKeys = true,keyProperty = "id")
     public void fillInResumeWorkExperienceInfo(@Param("workExperienceEntity") WorkExperienceEntity workExperienceEntity, @Param("foreignKey") Integer foreignKey);
 
     /**
@@ -117,6 +129,7 @@ public interface FillInResumeMapper {
      * @param foreignKey
      */
     @Insert("insert into project_experience_info(project_name, project_position ,project_start_time, project_end_time, project_detail, foreign_key) values (#{projectInfo.projectName}, #{projectInfo.projectPostion}, #{projectInfo.projectStartTime}, #{projectInfo.projectEndTime}, #{projectInfo.projectDetail}, #{foreignKey})")
+    @Options(useGeneratedKeys = true,keyProperty = "id")
     public void fillInResumeProjectExperienceInfo(@Param("projectInfo") ProjectInfo projectInfo, @Param("foreignKey") Integer foreignKey);
 
     /**
@@ -131,6 +144,7 @@ public interface FillInResumeMapper {
      * @param foreignKey
      */
     @Insert("insert into pdf_url(url, foreign_key) values (#{url}, #{foreignKey})")
+    @Options(useGeneratedKeys = true,keyProperty = "id")
     public void saveResumeUrl(@Param("url") String url, @Param("foreignKey") Integer foreignKey);
 
     /**

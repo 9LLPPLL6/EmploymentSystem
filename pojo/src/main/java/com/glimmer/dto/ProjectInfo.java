@@ -14,6 +14,7 @@ import java.io.Serializable;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ProjectInfo implements Serializable {
+    private Integer id;
     @JsonProperty("project_name")
     private String projectName;
     @JsonProperty("project_postion")

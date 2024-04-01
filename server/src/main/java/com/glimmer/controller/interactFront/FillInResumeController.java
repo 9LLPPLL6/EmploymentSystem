@@ -7,6 +7,7 @@ import com.glimmer.vo.ResumeUrlVo;
 import com.glimmer.vo.StatusVo;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CachePut;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -28,7 +29,7 @@ public class FillInResumeController {
      */
     @PostMapping("base_info")
     public Result<StatusVo> FillInResumePositionInfo(@RequestBody BaseInfo baseInfo) {
-        log.info("填写简历基本信息",baseInfo);
+        log.info("填写简历基本信息:{}",baseInfo);
 
         fillInResumeService.FillInResumeBaseInfo(baseInfo);
 
@@ -45,7 +46,7 @@ public class FillInResumeController {
      */
     @PostMapping("education")
     public Result<StatusVo> FillInResumeEducationInfo(@RequestBody EducationInfo educationInfo){
-        log.info("填写简历教育信息",educationInfo);
+        log.info("填写简历教育信息:{}",educationInfo);
 
         fillInResumeService.FillInResumeEducationInfo(educationInfo);
 
@@ -63,7 +64,7 @@ public class FillInResumeController {
      */
     @PostMapping("club")
     public Result<StatusVo> FillInResumeClubInfo(@RequestBody ClubInfo clubInfo){
-        log.info("填写简历社团信息:{}",clubInfo);
+        log.info("填写简历社团在校信息:{}",clubInfo);
 
         fillInResumeService.FillInResumeClubInfo(clubInfo);
 
@@ -80,8 +81,8 @@ public class FillInResumeController {
      * @return
      */
     @PostMapping("position")
-    public Result<StatusVo> FillInResumeClubInfo(@RequestBody PositionInfo positionInfo){
-        log.info("填写简历学生职务信息",positionInfo);
+    public Result<StatusVo> FillInResumePositionInfo(@RequestBody PositionInfo positionInfo){
+        log.info("填写简历学生职务信息:{}",positionInfo);
 
         fillInResumeService.FillInResumePositionInfo(positionInfo);
 
@@ -99,13 +100,13 @@ public class FillInResumeController {
      */
     @PostMapping("scholarship")
     public Result<StatusVo> FillInResumeClubInfo(@RequestBody ScholarshipInfo scholarshipInfo){
-        log.info("填写简历奖学金信息",scholarshipInfo);
+        log.info("填写简历奖学金信息:{}",scholarshipInfo);
 
         fillInResumeService.FillInResumeScholarshipInfo(scholarshipInfo);
 
         StatusVo statusVo = StatusVo.builder()
                 .status(1)
-                .message("简历学生职务填写成功")
+                .message("简历奖学金信息填写成功")
                 .build();
         return Result.success("成功",statusVo);
     }
@@ -117,7 +118,7 @@ public class FillInResumeController {
      */
     @PostMapping("socialact")
     public Result<StatusVo> FillInResumeClubInfo(@RequestBody SocialactInfo socialactInfo){
-        log.info("填写简历社会实践信息",socialactInfo);
+        log.info("填写简历社会实践信息:{}",socialactInfo);
 
         fillInResumeService.FillInResumeSocialActInfo(socialactInfo);
 
@@ -135,7 +136,7 @@ public class FillInResumeController {
      */
     @PostMapping("workExperience")
     public Result<StatusVo> FillInResumeWorkExperienceInfo(@RequestBody WorkExperienceInfo workExperienceInfo){
-        log.info("填写简历工作经历信息",workExperienceInfo);
+        log.info("填写简历工作经历信息:{}",workExperienceInfo);
 
         fillInResumeService.FillInResumeWorkExperienceInfo(workExperienceInfo);
 
@@ -153,7 +154,7 @@ public class FillInResumeController {
      */
     @PostMapping("projectExperience")
     public Result<StatusVo> FillInResumeWorkExperienceInfo(@RequestBody ProjectExperienceInfo projectExperienceInfo){
-        log.info("填写简历项目经历信息",projectExperienceInfo);
+        log.info("填写简历项目经历信息:{}",projectExperienceInfo);
 
         fillInResumeService.FillInResumeProjectExperienceInfo(projectExperienceInfo);
 
