@@ -30,7 +30,7 @@ public class FillInResumeServiceImpl implements FillInResumeService {
 
     //填写简历基本信息service
     @Override
-    @CachePut(cacheNames = "baseInfoCache", key = "result.id")
+    @CachePut(cacheNames = "baseInfoCache", key = "idUtils.id")
     public BaseInfo FillInResumeBaseInfo(BaseInfo baseInfo) {
         log.info("填写简历基本信息service");
         //判断填写的信息是否为空
@@ -48,7 +48,7 @@ public class FillInResumeServiceImpl implements FillInResumeService {
 
     //填写简历教育信息service
     @Override
-    @CachePut(cacheNames = "educationInfoCache", key = "result.id")
+    @CachePut(cacheNames = "educationInfoCache", key = "idUtils.id")
     public EducationInfo FillInResumeEducationInfo(EducationInfo educationInfo) {
         log.info("填写简历教育信息service");
         //判断信息是否为null
@@ -64,7 +64,7 @@ public class FillInResumeServiceImpl implements FillInResumeService {
 
     //填写简历社团在校信息service
     @Override
-    @CachePut(cacheNames = "clubInfoCache", key = "result.id")
+    @CachePut(cacheNames = "clubInfoCache", key = "idUtils.id")
     public ClubInfo FillInResumeClubInfo(ClubInfo clubInfo) {
         log.info("填写简历社团在校信息service");
 
@@ -81,7 +81,7 @@ public class FillInResumeServiceImpl implements FillInResumeService {
 
     //填写简历学生职务信息service
     @Override
-    @CachePut(cacheNames = "positionInfoCache", key = "result.id")
+    @CachePut(cacheNames = "positionInfoCache", key = "idUtils.id")
     public PositionInfo FillInResumePositionInfo(PositionInfo positionInfo) {
         log.info("填写简历学生职务信息service");
 
@@ -98,7 +98,7 @@ public class FillInResumeServiceImpl implements FillInResumeService {
 
     //填写简历奖学金信息service
     @Override
-    @CachePut(cacheNames = "scholarshipInfoCache", key = "result.id")
+    @CachePut(cacheNames = "scholarshipInfoCache", key = "idUtils.id")
     public ScholarshipInfo FillInResumeScholarshipInfo(ScholarshipInfo scholarshipInfo) {
         log.info("填写简历奖学金信息service");
 
@@ -114,7 +114,7 @@ public class FillInResumeServiceImpl implements FillInResumeService {
 
     //填写简历社会实践信息service
     @Override
-    @CachePut(cacheNames = "socialactInfo", key = "result.id")
+    @CachePut(cacheNames = "socialactInfo", key = "idUtils.id")
     public SocialactInfo FillInResumeSocialActInfo(SocialactInfo socialactInfo) {
         log.info("填写简历社会实践信息service");
 
@@ -130,7 +130,7 @@ public class FillInResumeServiceImpl implements FillInResumeService {
     }
 
     //填写单个工作经历
-    @CachePut(cacheNames = "workExperienceEntityCache", key = "result.id")
+    @CachePut(cacheNames = "workExperienceEntityCache", key = "idUtils.id")
     public WorkExperienceEntity FillInResumeWorkExperienceInfo(WorkExperienceEntity workExperienceEntity, Integer foreignKey){
         if (workExperienceEntity.getCompanyName() == null
                 || workExperienceEntity.getPositionName() == null
@@ -161,7 +161,7 @@ public class FillInResumeServiceImpl implements FillInResumeService {
 
 
     //填写单个项目经历
-    @CachePut(cacheNames = "projectInfoCache", key = "result.id")
+    @CachePut(cacheNames = "projectInfoCache", key = "idUtils.id")
     public ProjectInfo FillInResumeProjectExperienceInfo(ProjectInfo projectInfo, Integer foreignKey) {
         if (projectInfo.getProjectName() == null
                 || projectInfo.getProjectPostion() == null

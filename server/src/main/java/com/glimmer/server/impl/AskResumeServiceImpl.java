@@ -25,7 +25,7 @@ public class AskResumeServiceImpl implements AskResumeService {
 
 
     @Override
-    @Cacheable(cacheNames = "clubInfoCache", key = "#result.id")
+    @Cacheable(cacheNames = "clubInfoCache", key = "#idUtils.id")
     public ClubInfo AskClubHistory() {
         ClubInfo clubInfo = askMapper.AskClubHistory(idUtils.getId());
         //如果返回空值说明数据不存在
@@ -36,7 +36,7 @@ public class AskResumeServiceImpl implements AskResumeService {
     }
 
     @Override
-    @Cacheable(cacheNames = "positionInfoCache", key = "#result.id")
+    @Cacheable(cacheNames = "positionInfoCache", key = "#idUtils.id")
     public PositionInfo AskPositionHistory() {
         PositionInfo positionInfo = askMapper.AskPositionHistory(idUtils.getId());
         //如果返回空值说明数据不存在
@@ -48,7 +48,7 @@ public class AskResumeServiceImpl implements AskResumeService {
     }
 
     @Override
-    @Cacheable(cacheNames = "scholarshipInfoCache", key = "#result.id")
+    @Cacheable(cacheNames = "scholarshipInfoCache", key = "#idUtils.id")
     public ScholarshipInfo AskScholarshipHistory() {
         ScholarshipInfo scholarshipInfo = askMapper.AskScholarshipHistory(idUtils.getId());
         //如果返回空值说明数据不存在
@@ -60,7 +60,7 @@ public class AskResumeServiceImpl implements AskResumeService {
     }
 
     @Override
-    @Cacheable(cacheNames = "socialactInfo", key = "#result.id")
+    @Cacheable(cacheNames = "socialactInfo", key = "#idUtils.id")
     public SocialactInfo AskSocialActHistory() {
         SocialactInfo socialactInfo = askMapper.AskSocialActHistory(idUtils.getId());
         //如果返回空值说明数据不存在
@@ -71,7 +71,7 @@ public class AskResumeServiceImpl implements AskResumeService {
     }
 
     @Override
-    @Cacheable(cacheNames = "educationInfoCache", key = "#result.id")
+    @Cacheable(cacheNames = "educationInfoCache", key = "#idUtils.id")
     public EducationInfo AskEducationHistory() {
         EducationInfo educationInfo = askMapper.AskEducationHistory(idUtils.getId());
         //如果返回空值说明数据不存在
@@ -82,7 +82,7 @@ public class AskResumeServiceImpl implements AskResumeService {
     }
 
     @Override
-    @Cacheable(cacheNames = "projectInfoCache", key = "#result.experience.id")
+    @Cacheable(cacheNames = "projectInfoCache", key = "#idUtils.id")
     public ProjectExperienceInfo AskProjectHistory() {
         ProjectExperienceInfo projectExperienceInfo = askMapper.AskProjectHistory(idUtils.getId());
         //如果返回空值说明数据不存在
@@ -93,7 +93,7 @@ public class AskResumeServiceImpl implements AskResumeService {
     }
 
     @Override
-    @Cacheable(cacheNames = "workExperienceEntityCache", key = "#result.experience.id")
+    @Cacheable(cacheNames = "workExperienceEntityCache", key = "#idUtils.id")
     public WorkExperienceInfo AskWorkHistory() {
         WorkExperienceInfo workExperienceInfo = askMapper.AskWorkHistory(idUtils.getId());
         //如果返回空值说明数据不存在
@@ -104,7 +104,7 @@ public class AskResumeServiceImpl implements AskResumeService {
     }
 
     @Override
-    @Cacheable(cacheNames = "baseInfoCache", key = "#result.id")
+    @Cacheable(cacheNames = "baseInfoCache", key = "#idUtils.id")
     public BaseInfo AskBaseHistory() {
         BaseInfo baseInfo = askMapper.AskBaseHistory(idUtils.getId());        //如果返回空值说明数据不存在
         if (baseInfo == null){
