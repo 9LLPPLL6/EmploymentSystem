@@ -16,5 +16,5 @@ public class BaseInfo implements Serializable {
     private Integer gender;
     private String phone;
     private String email;
-    private Integer identity;
+    private String identity;
 }

@@ -12,7 +12,7 @@ import java.util.List;
 public interface SendMessageClient {
 
     /**
-     * 上传pdf文件
+     * 上传pdf文件，HR模块，根据职位要求和上传简历，返回推荐人员列表
      * @param multipartFile pdf文件
      * @return 推荐结果
      */

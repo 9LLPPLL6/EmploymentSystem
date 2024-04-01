@@ -18,4 +18,5 @@ public class EducationInfo implements Serializable {
     private String degree;
     private String grade;
     private String rank;
+    private String nature;
 }

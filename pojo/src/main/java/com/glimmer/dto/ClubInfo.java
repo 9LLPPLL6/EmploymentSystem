@@ -22,4 +22,5 @@ public class ClubInfo implements Serializable {
     private String clubEndTime;
     @JsonProperty("club_detail")
     private String clubDetail;
+    private String position;
 }

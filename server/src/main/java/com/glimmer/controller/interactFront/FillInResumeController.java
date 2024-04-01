@@ -2,6 +2,7 @@ package com.glimmer.controller.interactFront;
 
 import com.glimmer.dto.*;
 import com.glimmer.result.Result;
+import com.glimmer.server.impl.FillInResumeServiceImpl;
 import com.glimmer.vo.ResumeUrlVo;
 import com.glimmer.vo.StatusVo;
 import lombok.extern.slf4j.Slf4j;
@@ -62,7 +63,7 @@ public class FillInResumeController {
      */
     @PostMapping("club")
     public Result<StatusVo> FillInResumeClubInfo(@RequestBody ClubInfo clubInfo){
-        log.info("填写简历社团在校信息",clubInfo);
+        log.info("填写简历社团信息:{}",clubInfo);
 
         fillInResumeService.FillInResumeClubInfo(clubInfo);
 

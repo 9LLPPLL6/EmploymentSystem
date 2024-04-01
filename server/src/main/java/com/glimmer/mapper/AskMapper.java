@@ -13,7 +13,7 @@ import java.util.List;
 @Mapper
 public interface AskMapper {
 
-    @Select("select * from base_info where foreign_key = #{id}")
+    @Select("select * from personal_info where foreign_key = #{id}")
     List<BaseInfo> AskBaseHistory(int id);
 
     @Select("select * from education_info where foreign_key = #{id}")
