@@ -23,4 +23,5 @@ public class PositionInfo implements Serializable {
     private String stuEndTime;
     @JsonProperty("stu_detail")
     private String stuDetail;
+    private Integer foreignKey;
 }

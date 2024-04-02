@@ -24,4 +24,5 @@ public class ClubInfo implements Serializable {
     @JsonProperty("club_detail")
     private String clubDetail;
     private String position;
+    private Integer foreignKey;
 }

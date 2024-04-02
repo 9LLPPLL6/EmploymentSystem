@@ -23,4 +23,5 @@ public class SocialactInfo implements Serializable {
     private String socialEndTime;
     @JsonProperty("social_detail")
     private String socialDetail;
+    private Integer foreignKey;
 }

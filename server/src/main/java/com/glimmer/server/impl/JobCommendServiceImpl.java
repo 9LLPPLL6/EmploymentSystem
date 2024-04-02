@@ -30,14 +30,14 @@ public class JobCommendServiceImpl implements JobCommandService {
 
     @Autowired
     private IdUtils idUtils;
-    @Autowired
-    private JobRecommendationClient jobRecommendationClient;
+//    @Autowired
+//    private JobRecommendationClient jobRecommendationClient;
     @Autowired
     private FillInResumeMapper fillInResumeMapper;
 
     @Override
     public Jobs getJobRecon() {
-        PdfUrl[] pdfUrls = fillInResumeMapper.getResumePdfUrl(idUtils.getId());
+        PdfUrl[] pdfUrls = fillInResumeMapper.getResumePdfUrl(idUtils.getId().getId());
 
         String url = pdfUrls[0].getUrl();
 

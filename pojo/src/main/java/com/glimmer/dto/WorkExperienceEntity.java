@@ -25,5 +25,6 @@ public class WorkExperienceEntity implements Serializable {
     private String workEndTime;
     @JsonProperty("work_detail")
     private String workDetail;
+    private Integer foreignKey;
 
 }

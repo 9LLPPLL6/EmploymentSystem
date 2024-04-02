@@ -25,5 +25,6 @@ public class ProjectInfo implements Serializable {
     private String projectEndTime;
     @JsonProperty("project_detail")
     private String projectDetail;
+    private Integer foreignKey;
 
 }

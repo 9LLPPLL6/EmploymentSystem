@@ -54,7 +54,7 @@ public class CacheUtils {
 
 
     public void set(String key, Object value, Long time, TimeUnit unit){
-        stringRedisTemplate.opsForValue().set(key, JSONUtil.toJsonStr(value), time, unit);
+        stringRedisTemplate.opsForValue().set(key, "{id:"+value+"}", time, unit);
     }
 
     /**
@@ -91,7 +91,6 @@ public class CacheUtils {
         //1.从redis查询数据缓存
         String json = stringRedisTemplate.opsForValue().get(key);
         //2.判断是否存在
-
         if (StrUtil.isNotBlank(json)) {
             //3.如果存在，直接返回数据
             return JSONUtil.toBean(json, type);

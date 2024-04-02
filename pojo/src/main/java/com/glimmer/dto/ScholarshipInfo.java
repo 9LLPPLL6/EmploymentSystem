@@ -20,4 +20,5 @@ public class ScholarshipInfo implements Serializable {
     private String scholarshipTime;
     @JsonProperty("scholarship_detail")
     private String scholarshipDetail;
+    private Integer foreignKey;
 }
