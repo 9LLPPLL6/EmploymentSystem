@@ -10,6 +10,7 @@ import io.jsonwebtoken.Jwts;
 import jakarta.annotation.Resource;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
+import org.checkerframework.checker.units.qual.C;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Component;
@@ -32,6 +33,7 @@ public class IdUtils {
 
     private static final String signKey = "EmploymentSystem";
 
+    @Cacheable(cacheNames = "userCache", key = "#result.id")
     public CacheData getId() {
 
         HttpServletRequest request = ((ServletRequestAttributes) Objects.requireNonNull(RequestContextHolder.getRequestAttributes()))
