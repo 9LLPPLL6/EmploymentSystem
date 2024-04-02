@@ -30,8 +30,8 @@ public class JobCommendServiceImpl implements JobCommandService {
 
     @Autowired
     private IdUtils idUtils;
-    @Autowired
-    private JobRecommendationClient jobRecommendationClient;
+//    @Autowired
+//    private JobRecommendationClient jobRecommendationClient;
     @Autowired
     private FillInResumeMapper fillInResumeMapper;
 
