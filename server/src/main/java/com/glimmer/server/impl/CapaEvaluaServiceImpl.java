@@ -38,7 +38,7 @@ public class CapaEvaluaServiceImpl implements CapaEvaluaService {
 //    private CapaEvaluaClient capaEvaluaClient;
     @Override
     public CapaEvaluaRespond getcapaEvalua(String desiredPosition) {
-        PdfUrl[] pdfUrls = fillInResumeMapper.getResumePdfUrl(idUtils.getId());
+        PdfUrl[] pdfUrls = fillInResumeMapper.getResumePdfUrl(idUtils.getId().getId());
 
         String mlUrl = "http://localhost:15213/evaluatetest";
 

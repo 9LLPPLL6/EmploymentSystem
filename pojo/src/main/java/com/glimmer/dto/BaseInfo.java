@@ -18,4 +18,5 @@ public class BaseInfo implements Serializable {
     private String phone;
     private String email;
     private String identity;
+    private Integer foreignKey;
 }

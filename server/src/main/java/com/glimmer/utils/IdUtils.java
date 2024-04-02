@@ -1,5 +1,6 @@
 package com.glimmer.utils;
 
+import com.glimmer.Data.CacheData;
 import com.glimmer.entity.User;
 import com.glimmer.exception.UserException;
 import com.glimmer.mapper.IdMapper;
@@ -9,7 +10,9 @@ import io.jsonwebtoken.Jwts;
 import jakarta.annotation.Resource;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
+import org.checkerframework.checker.units.qual.C;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
@@ -28,11 +31,10 @@ public class IdUtils {
     @Autowired
     private IdMapper idMapper;
 
-    @Resource
-    CacheUtils cacheUtils;
     private static final String signKey = "EmploymentSystem";
 
-    public Integer getId() {
+    @Cacheable(cacheNames = "userCache", key = "#result.id")
+    public CacheData getId() {
 
         HttpServletRequest request = ((ServletRequestAttributes) Objects.requireNonNull(RequestContextHolder.getRequestAttributes()))
                 .getRequest();
@@ -45,18 +47,18 @@ public class IdUtils {
         User user = new User();
         user.setUsername((String) claims.get("username"));
         user.setPassword((String) claims.get("password"));
-        Integer id = cacheUtils.queryWithLogicalExpire(CACHE_USER_KEY, user, Integer.class, idMapper::selectId, TTL, TimeUnit.MINUTES);
-
+        Integer id = idMapper.selectId(user);
         if(id == null){
             //返回空值说明数据不存在
             throw new UserException("用户不存在");
         }
 
-        return id;
+        return new CacheData(id);
 //        String username = "tom";
 //        String password = "123456";
 //
 //        return idMapper.selectId(username, password);
     }
+
 
 }

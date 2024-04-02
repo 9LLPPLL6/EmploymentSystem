@@ -26,9 +26,9 @@ public class AskResumeServiceImpl implements AskResumeService {
 
 
     @Override
-    @Cacheable(cacheNames = "clubInfoCache", key = "#idUtils.getId()")
+    @Cacheable(cacheNames = "clubInfoCache", key = "#result.foreignKey")
     public ClubInfo AskClubHistory() {
-        ClubInfo clubInfo = askMapper.AskClubHistory(idUtils.getId());
+        ClubInfo clubInfo = askMapper.AskClubHistory(idUtils.getId().getId());
         //如果返回空值说明数据不存在
         if (clubInfo == null){
             throw new BaseException("数据不存在");
@@ -37,9 +37,9 @@ public class AskResumeServiceImpl implements AskResumeService {
     }
 
     @Override
-    @Cacheable(cacheNames = "positionInfoCache", key = "#idUtils.getId()")
+    @Cacheable(cacheNames = "positionInfoCache", key = "#result.foreignKey")
     public PositionInfo AskPositionHistory() {
-        PositionInfo positionInfo = askMapper.AskPositionHistory(idUtils.getId());
+        PositionInfo positionInfo = askMapper.AskPositionHistory(idUtils.getId().getId());
         //如果返回空值说明数据不存在
         if (positionInfo == null){
             throw new BaseException("数据不存在");
@@ -49,9 +49,9 @@ public class AskResumeServiceImpl implements AskResumeService {
     }
 
     @Override
-    @Cacheable(cacheNames = "scholarshipInfoCache", key = "#idUtils.getId()")
+    @Cacheable(cacheNames = "scholarshipInfoCache", key = "#result.foreignKey")
     public ScholarshipInfo AskScholarshipHistory() {
-        ScholarshipInfo scholarshipInfo = askMapper.AskScholarshipHistory(idUtils.getId());
+        ScholarshipInfo scholarshipInfo = askMapper.AskScholarshipHistory(idUtils.getId().getId());
         //如果返回空值说明数据不存在
         if (scholarshipInfo == null){
             throw new BaseException("数据不存在");
@@ -61,9 +61,9 @@ public class AskResumeServiceImpl implements AskResumeService {
     }
 
     @Override
-    @Cacheable(cacheNames = "socialactInfo", key = "#idUtils.getId()")
+    @Cacheable(cacheNames = "socialactInfo", key = "#result.foreignKey")
     public SocialactInfo AskSocialActHistory() {
-        SocialactInfo socialactInfo = askMapper.AskSocialActHistory(idUtils.getId());
+        SocialactInfo socialactInfo = askMapper.AskSocialActHistory(idUtils.getId().getId());
         //如果返回空值说明数据不存在
         if (socialactInfo == null){
             throw new BaseException("数据不存在");
@@ -72,9 +72,9 @@ public class AskResumeServiceImpl implements AskResumeService {
     }
 
     @Override
-    @Cacheable(cacheNames = "educationInfoCache", key = "#idUtils.getId()")
+    @Cacheable(cacheNames = "educationInfoCache", key = "#result.foreignKey")
     public EducationInfo AskEducationHistory() {
-        EducationInfo educationInfo = askMapper.AskEducationHistory(idUtils.getId());
+        EducationInfo educationInfo = askMapper.AskEducationHistory(idUtils.getId().getId());
         //如果返回空值说明数据不存在
         if (educationInfo == null){
             throw new BaseException("数据不存在");
@@ -83,9 +83,9 @@ public class AskResumeServiceImpl implements AskResumeService {
     }
 
     @Override
-    @Cacheable(cacheNames = "projectInfoCache", key = "#idUtils.getId()")
+    @Cacheable(cacheNames = "projectInfoCache", key = "#result.experience.foreignKey")
     public ProjectExperienceInfo AskProjectHistory() {
-        ProjectExperienceInfo projectExperienceInfo = askMapper.AskProjectHistory(idUtils.getId());
+        ProjectExperienceInfo projectExperienceInfo = askMapper.AskProjectHistory(idUtils.getId().getId());
         //如果返回空值说明数据不存在
         if (projectExperienceInfo == null){
             throw new BaseException("数据不存在");
@@ -94,9 +94,9 @@ public class AskResumeServiceImpl implements AskResumeService {
     }
 
     @Override
-    @Cacheable(cacheNames = "workExperienceEntityCache", key = "#idUtils.getId()")
+    @Cacheable(cacheNames = "workExperienceEntityCache", key = "#result.experience.foreignKey")
     public WorkExperienceInfo AskWorkHistory() {
-        WorkExperienceInfo workExperienceInfo = askMapper.AskWorkHistory(idUtils.getId());
+        WorkExperienceInfo workExperienceInfo = askMapper.AskWorkHistory(idUtils.getId().getId());
         //如果返回空值说明数据不存在
         if (workExperienceInfo == null){
             throw new BaseException("数据不存在");
@@ -107,7 +107,7 @@ public class AskResumeServiceImpl implements AskResumeService {
     @Override
     @Cacheable(cacheNames = "baseInfoCache", key = "#idUtils.getId()")
     public BaseInfo AskBaseHistory() {
-        BaseInfo baseInfo = askMapper.AskBaseHistory(idUtils.getId());        //如果返回空值说明数据不存在
+        BaseInfo baseInfo = askMapper.AskBaseHistory(idUtils.getId().getId());        //如果返回空值说明数据不存在
         if (baseInfo == null){
             throw new BaseException("数据不存在");
         }

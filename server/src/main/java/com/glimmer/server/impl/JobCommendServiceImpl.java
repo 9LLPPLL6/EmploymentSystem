@@ -37,7 +37,7 @@ public class JobCommendServiceImpl implements JobCommandService {
 
     @Override
     public Jobs getJobRecon() {
-        PdfUrl[] pdfUrls = fillInResumeMapper.getResumePdfUrl(idUtils.getId());
+        PdfUrl[] pdfUrls = fillInResumeMapper.getResumePdfUrl(idUtils.getId().getId());
 
         String url = pdfUrls[0].getUrl();
 
