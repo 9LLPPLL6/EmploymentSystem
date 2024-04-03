@@ -3,6 +3,7 @@ package com.glimmer.server.impl;
 import com.glimmer.clients.SendMessageClient;
 import com.glimmer.dto.*;
 import com.glimmer.entity.PdfUrl;
+import com.glimmer.entity.User;
 import com.glimmer.exception.*;
 import com.glimmer.mapper.FillInResumeMapper;
 import com.glimmer.server.FillInResumeService;
@@ -33,10 +34,9 @@ public class FillInResumeServiceImpl implements FillInResumeService {
     //填写简历基本信息service
     @Transactional
     @Override
-    @CachePut(cacheNames = "baseInfoCache", key = "#result.foreignKey")
-    public BaseInfo FillInResumeBaseInfo(BaseInfo baseInfo) {
+    @CachePut(cacheNames = "baseInfoCache", key = "#foreignKey")
+    public void FillInResumeBaseInfo(BaseInfo baseInfo, Integer foreignKey) {
         log.info("填写简历基本信息service");
-        int foreignKey = idUtils.getId().getId();
         //判断填写的信息是否为空
         if (baseInfo.getEmail() == null
                 || baseInfo.getGender() == null
@@ -51,15 +51,13 @@ public class FillInResumeServiceImpl implements FillInResumeService {
         //在数据库插入数据
         fillInResumeMapper.fillInResumeBaseInfo(baseInfo, foreignKey);
         baseInfo.setForeignKey(foreignKey);
-        return baseInfo;
     }
 
     //填写简历教育信息service
     @Override
-    @CachePut(cacheNames = "educationInfoCache", key = "#result.foreignKey")
-    public EducationInfo FillInResumeEducationInfo(EducationInfo educationInfo) {
+    @CachePut(cacheNames = "educationInfoCache", key = "#foreignKey")
+    public void FillInResumeEducationInfo(EducationInfo educationInfo, Integer foreignKey) {
         log.info("填写简历教育信息service");
-        int foreignKey = idUtils.getId().getId();
         //判断信息是否为null
         if (educationInfo.getDegree() == null
                 || educationInfo.getMajor() == null
@@ -69,15 +67,13 @@ public class FillInResumeServiceImpl implements FillInResumeService {
 
         fillInResumeMapper.fillInResumeEducationInfo(educationInfo, foreignKey);
         educationInfo.setForeignKey(foreignKey);
-        return educationInfo;
     }
 
     //填写简历社团在校信息service
     @Override
-    @CachePut(cacheNames = "clubInfoCache", key = "#result.foreignKey")
-    public ClubInfo FillInResumeClubInfo(ClubInfo clubInfo) {
+    @CachePut(cacheNames = "clubInfoCache", key = "#foreignKey")
+    public void FillInResumeClubInfo(ClubInfo clubInfo, Integer foreignKey) {
         log.info("填写简历社团在校信息service");
-        int foreignKey = idUtils.getId().getId();
         if (clubInfo.getClubName() == null
                 || clubInfo.getClubStartTime() == null
                 || clubInfo.getClubEndTime() == null
@@ -87,15 +83,13 @@ public class FillInResumeServiceImpl implements FillInResumeService {
 
         fillInResumeMapper.fillInResumeClubInfo(clubInfo, foreignKey);
         clubInfo.setForeignKey(foreignKey);
-        return clubInfo;
     }
 
     //填写简历学生职务信息service
     @Override
-    @CachePut(cacheNames = "positionInfoCache", key = "#result.foreignKey")
-    public PositionInfo FillInResumePositionInfo(PositionInfo positionInfo) {
+    @CachePut(cacheNames = "positionInfoCache", key = "#foreignKey")
+    public void FillInResumePositionInfo(PositionInfo positionInfo, Integer foreignKey) {
         log.info("填写简历学生职务信息service");
-        int foreignKey = idUtils.getId().getId();
         if (positionInfo.getStuPosition() == null
                 || positionInfo.getStuStartTime() == null
                 || positionInfo.getStuEndTime() == null
@@ -105,15 +99,13 @@ public class FillInResumeServiceImpl implements FillInResumeService {
 
         fillInResumeMapper.fillInResumePositionInfo(positionInfo, foreignKey);
         positionInfo.setForeignKey(foreignKey);
-        return positionInfo;
     }
 
     //填写简历奖学金信息service
     @Override
-    @CachePut(cacheNames = "scholarshipInfoCache", key = "#result.foreignKey")
-    public ScholarshipInfo FillInResumeScholarshipInfo(ScholarshipInfo scholarshipInfo) {
+    @CachePut(cacheNames = "scholarshipInfoCache", key = "#foreignKey")
+    public void FillInResumeScholarshipInfo(ScholarshipInfo scholarshipInfo, Integer foreignKey) {
         log.info("填写简历奖学金信息service");
-        int foreignKey = idUtils.getId().getId();
 
         if (scholarshipInfo.getScholarship() == null
                 || scholarshipInfo.getScholarshipTime() == null
@@ -123,16 +115,13 @@ public class FillInResumeServiceImpl implements FillInResumeService {
 
         fillInResumeMapper.fillInResumeScholarshipInfo(scholarshipInfo, foreignKey);
         scholarshipInfo.setForeignKey(foreignKey);
-        return scholarshipInfo;
     }
 
     //填写简历社会实践信息service
     @Override
-    @CachePut(cacheNames = "socialactInfo", key = "#result.foreignKey")
-    public SocialactInfo FillInResumeSocialActInfo(SocialactInfo socialactInfo) {
+    @CachePut(cacheNames = "socialactInfo", key = "#foreignKey")
+    public void FillInResumeSocialActInfo(SocialactInfo socialactInfo, Integer foreignKey) {
         log.info("填写简历社会实践信息service");
-        int foreignKey = idUtils.getId().getId();
-
         if (socialactInfo.getSocialAct() == null
                 || socialactInfo.getSocialStartTime() == null
                 || socialactInfo.getSocialEndTime() == null
@@ -142,12 +131,11 @@ public class FillInResumeServiceImpl implements FillInResumeService {
 
         fillInResumeMapper.fillInResumeSocialActInfo(socialactInfo, foreignKey);
         socialactInfo.setForeignKey(foreignKey);
-        return socialactInfo;
     }
 
     //填写单个工作经历
-    @CachePut(cacheNames = "workExperienceEntityCache", key = "#foreignKey")
-    public Integer FillInResumeWorkExperienceInfo(WorkExperienceEntity workExperienceEntity, Integer foreignKey){
+//    @CachePut(cacheNames = "workExperienceEntityCache", key = "#foreignKey")
+    public void FillInResumeWorkExperienceInfo(WorkExperienceEntity workExperienceEntity, Integer foreignKey){
         if (workExperienceEntity.getCompanyName() == null
                 || workExperienceEntity.getPositionName() == null
                 || workExperienceEntity.getWorkStartTime() == null
@@ -157,18 +145,17 @@ public class FillInResumeServiceImpl implements FillInResumeService {
         }
 
         fillInResumeMapper.fillInResumeWorkExperienceInfo(workExperienceEntity, foreignKey);
-        return foreignKey;
     }
 
     //填写简历工作经历信息service
     @Override
-    public void FillInResumeWorkExperienceInfo(WorkExperienceInfo workExperienceInfo) {
+    @CachePut(cacheNames = "workExperienceEntityCache", key = "#foreignKey")
+    public void FillInResumeWorkExperienceInfo(WorkExperienceInfo workExperienceInfo,Integer foreignKey) {
         log.info("填写简历工作经历信息service");
 
 
         WorkExperienceEntity workExperienceEntity;
         WorkExperienceEntity[] experience = workExperienceInfo.getExperience();
-        Integer foreignKey = idUtils.getId().getId();
 
         for (int i = 0; i < experience.length; i++) {
             workExperienceEntity = experience[i];
@@ -178,8 +165,8 @@ public class FillInResumeServiceImpl implements FillInResumeService {
 
 
     //填写单个项目经历
-    @CachePut(cacheNames = "projectInfoCache", key = "#foreignKey")
-    public Integer FillInResumeProjectExperienceInfo(ProjectInfo projectInfo, Integer foreignKey) {
+//    @CachePut(cacheNames = "projectInfoCache", key = "#foreignKey")
+    public void FillInResumeProjectExperienceInfo(ProjectInfo projectInfo, Integer foreignKey) {
         if (projectInfo.getProjectName() == null
                 || projectInfo.getProjectPostion() == null
                 || projectInfo.getProjectStartTime() == null
@@ -188,17 +175,16 @@ public class FillInResumeServiceImpl implements FillInResumeService {
         }
 
         fillInResumeMapper.fillInResumeProjectExperienceInfo(projectInfo, foreignKey);
-        return foreignKey;
     }
 
     //填写简历项目经历信息service
     @Override
-    public void FillInResumeProjectExperienceInfo(ProjectExperienceInfo projectExperienceInfo) {
+    @CachePut(cacheNames = "projectInfoCache", key = "#foreignKey")
+    public void FillInResumeProjectExperienceInfo(ProjectExperienceInfo projectExperienceInfo,Integer foreignKey) {
         log.info("填写简历项目经历信息service");
 
         ProjectInfo projectInfo;
         ProjectInfo[] experience = projectExperienceInfo.getExperience();
-        Integer foreignKey = idUtils.getId().getId();
 
         for (int i = 0; i < experience.length; i++) {
             projectInfo = experience[i];
@@ -218,15 +204,15 @@ public class FillInResumeServiceImpl implements FillInResumeService {
             throw new PdfNullException("简历PDF的URL为null");
         } else {
             //将远端oss的pdf文件删除
-            PdfUrl[] pdfUrls = fillInResumeMapper.getResumePdfUrl(idUtils.getId().getId());
+            PdfUrl[] pdfUrls = fillInResumeMapper.getResumePdfUrl(idUtils.getId(new User()).getId());
             for (int i = 0; i < pdfUrls.length; i++) {
                 String url = pdfUrls[i].getUrl();
                 DeleteResumePdf.deletePdf(url);
             }
             //删除数据库的相关信息
-            fillInResumeMapper.deleteResumeUrl(idUtils.getId().getId());
+            fillInResumeMapper.deleteResumeUrl(idUtils.getId(new User()).getId());
             //插入新信息
-            fillInResumeMapper.saveResumeUrl(pdfUrl, idUtils.getId().getId());
+            fillInResumeMapper.saveResumeUrl(pdfUrl, idUtils.getId(new User()).getId());
 
         }
     }
@@ -236,7 +222,7 @@ public class FillInResumeServiceImpl implements FillInResumeService {
     public String GetResumePdfUrl() {
         String url = null;
 
-        PdfUrl[] pdfUrls = fillInResumeMapper.getResumePdfUrl(idUtils.getId().getId());
+        PdfUrl[] pdfUrls = fillInResumeMapper.getResumePdfUrl(idUtils.getId(new User()).getId());
 
         //获取最新的pdf的url
         url = pdfUrls[pdfUrls.length-1].getUrl();

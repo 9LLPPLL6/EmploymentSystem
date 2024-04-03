@@ -7,23 +7,23 @@ import com.glimmer.dto.*;
 import java.util.List;
 
 public interface AskResumeService {
-    BaseInfo AskBaseHistory();
+    BaseInfo AskBaseHistory(Integer foreignKey);
 
-    EducationInfo AskEducationHistory();
+    EducationInfo AskEducationHistory(Integer foreignKey);
 
-    ProjectExperienceInfo AskProjectHistory();
+    ProjectExperienceInfo AskProjectHistory(Integer foreignKey);
 
-    WorkExperienceInfo AskWorkHistory();
+    WorkExperienceInfo AskWorkHistory(Integer foreignKey);
 
     BaseInfo AskLatestBaseHistory(Integer id);
 
-    ClubInfo AskClubHistory();
+    ClubInfo AskClubHistory(Integer foreignKey);
 
-    PositionInfo AskPositionHistory();
+    PositionInfo AskPositionHistory(Integer foreignKey);
 
-    ScholarshipInfo AskScholarshipHistory();
+    ScholarshipInfo AskScholarshipHistory(Integer foreignKey);
 
-    SocialactInfo AskSocialActHistory();
+    SocialactInfo AskSocialActHistory(Integer foreignKey);
 
     EducationInfo FindEducationHistory(Integer id);
 

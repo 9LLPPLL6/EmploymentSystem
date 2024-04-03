@@ -1,8 +1,10 @@
 package com.glimmer.controller.interactFront;
 
 import com.glimmer.dto.*;
+import com.glimmer.entity.User;
 import com.glimmer.result.Result;
 import com.glimmer.server.impl.FillInResumeServiceImpl;
+import com.glimmer.utils.IdUtils;
 import com.glimmer.vo.ResumeUrlVo;
 import com.glimmer.vo.StatusVo;
 import lombok.extern.slf4j.Slf4j;
@@ -21,6 +23,9 @@ public class FillInResumeController {
     @Autowired
     private FillInResumeServiceImpl fillInResumeService;
 
+    @Autowired
+    private IdUtils idUtils;
+
     /**
      * 用户填写简历学生职务信息的接口
      *
@@ -31,7 +36,7 @@ public class FillInResumeController {
     public Result<StatusVo> FillInResumePositionInfo(@RequestBody BaseInfo baseInfo) {
         log.info("填写简历基本信息:{}",baseInfo);
 
-        fillInResumeService.FillInResumeBaseInfo(baseInfo);
+        fillInResumeService.FillInResumeBaseInfo(baseInfo,idUtils.getId(new User()).getId());
 
         StatusVo statusVo = StatusVo.builder()
                 .status(1)
@@ -48,7 +53,7 @@ public class FillInResumeController {
     public Result<StatusVo> FillInResumeEducationInfo(@RequestBody EducationInfo educationInfo){
         log.info("填写简历教育信息:{}",educationInfo);
 
-        fillInResumeService.FillInResumeEducationInfo(educationInfo);
+        fillInResumeService.FillInResumeEducationInfo(educationInfo,idUtils.getId(new User()).getId());
 
         StatusVo statusVo = StatusVo.builder()
                 .status(1)
@@ -66,7 +71,7 @@ public class FillInResumeController {
     public Result<StatusVo> FillInResumeClubInfo(@RequestBody ClubInfo clubInfo){
         log.info("填写简历社团在校信息:{}",clubInfo);
 
-        fillInResumeService.FillInResumeClubInfo(clubInfo);
+        fillInResumeService.FillInResumeClubInfo(clubInfo,idUtils.getId(new User()).getId());
 
         StatusVo statusVo = StatusVo.builder()
                 .status(1)
@@ -84,7 +89,7 @@ public class FillInResumeController {
     public Result<StatusVo> FillInResumePositionInfo(@RequestBody PositionInfo positionInfo){
         log.info("填写简历学生职务信息:{}",positionInfo);
 
-        fillInResumeService.FillInResumePositionInfo(positionInfo);
+        fillInResumeService.FillInResumePositionInfo(positionInfo,idUtils.getId(new User()).getId());
 
         StatusVo statusVo = StatusVo.builder()
                 .status(1)
@@ -102,7 +107,8 @@ public class FillInResumeController {
     public Result<StatusVo> FillInResumeClubInfo(@RequestBody ScholarshipInfo scholarshipInfo){
         log.info("填写简历奖学金信息:{}",scholarshipInfo);
 
-        fillInResumeService.FillInResumeScholarshipInfo(scholarshipInfo);
+        fillInResumeService.FillInResumeScholarshipInfo(scholarshipInfo,idUtils.getId(new User()).getId());
+
 
         StatusVo statusVo = StatusVo.builder()
                 .status(1)
@@ -120,7 +126,7 @@ public class FillInResumeController {
     public Result<StatusVo> FillInResumeClubInfo(@RequestBody SocialactInfo socialactInfo){
         log.info("填写简历社会实践信息:{}",socialactInfo);
 
-        fillInResumeService.FillInResumeSocialActInfo(socialactInfo);
+        fillInResumeService.FillInResumeSocialActInfo(socialactInfo,idUtils.getId(new User()).getId());
 
         StatusVo statusVo = StatusVo.builder()
                 .status(1)
@@ -138,7 +144,7 @@ public class FillInResumeController {
     public Result<StatusVo> FillInResumeWorkExperienceInfo(@RequestBody WorkExperienceInfo workExperienceInfo){
         log.info("填写简历工作经历信息:{}",workExperienceInfo);
 
-        fillInResumeService.FillInResumeWorkExperienceInfo(workExperienceInfo);
+        fillInResumeService.FillInResumeWorkExperienceInfo(workExperienceInfo,idUtils.getId(new User()).getId());
 
         StatusVo statusVo = StatusVo.builder()
                 .status(1)
@@ -156,7 +162,7 @@ public class FillInResumeController {
     public Result<StatusVo> FillInResumeWorkExperienceInfo(@RequestBody ProjectExperienceInfo projectExperienceInfo){
         log.info("填写简历项目经历信息:{}",projectExperienceInfo);
 
-        fillInResumeService.FillInResumeProjectExperienceInfo(projectExperienceInfo);
+        fillInResumeService.FillInResumeProjectExperienceInfo(projectExperienceInfo,idUtils.getId(new User()).getId());
 
         StatusVo statusVo = StatusVo.builder()
                 .status(1)

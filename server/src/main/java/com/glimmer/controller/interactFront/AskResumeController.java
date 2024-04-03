@@ -2,8 +2,10 @@ package com.glimmer.controller.interactFront;
 
 
 import com.glimmer.dto.*;
+import com.glimmer.entity.User;
 import com.glimmer.result.Result;
 import com.glimmer.server.AskResumeService;
+import com.glimmer.utils.IdUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,6 +22,9 @@ public class AskResumeController {
     @Autowired
     private AskResumeService askResumeService;
 
+    @Autowired
+    private IdUtils idUtils;
+
     /**
      * 个人信息查询
      * @return 个人基本信息
@@ -27,7 +32,7 @@ public class AskResumeController {
     @GetMapping("/resume/get_base")
     public Result AskResumeBase(){
         log.info("返回历史个人信息");
-        return Result.success("成功",askResumeService.AskBaseHistory());
+        return Result.success("成功",askResumeService.AskBaseHistory(idUtils.getId(new User()).getId()));
     }
 
     /**
@@ -37,7 +42,7 @@ public class AskResumeController {
     @GetMapping("/resume/get_education")
     public Result AskResumeEducation(){
         log.info("返回历史教育经历");
-        return Result.success("成功",askResumeService.AskEducationHistory());
+        return Result.success("成功",askResumeService.AskEducationHistory(idUtils.getId(new User()).getId()));
     }
 
     /**
@@ -47,7 +52,7 @@ public class AskResumeController {
     @GetMapping("/resume/get_club")
     public Result AskResumeClub(){
         log.info("返回历史社团经历");
-        return Result.success("成功",askResumeService.AskClubHistory());
+        return Result.success("成功",askResumeService.AskClubHistory(idUtils.getId(new User()).getId()));
     }
 
     /**
@@ -57,7 +62,7 @@ public class AskResumeController {
     @GetMapping("/resume/get_position")
     public Result AskResumePosition(){
         log.info("返回历史学生职务经历");
-        return Result.success("成功",askResumeService.AskPositionHistory());
+        return Result.success("成功",askResumeService.AskPositionHistory(idUtils.getId(new User()).getId()));
     }
 
     /**
@@ -67,7 +72,7 @@ public class AskResumeController {
     @GetMapping("/resume/get_scholarship")
     public Result AskResumeScholarship(){
         log.info("返回历史奖学金信息");
-        return Result.success("成功",askResumeService.AskScholarshipHistory());
+        return Result.success("成功",askResumeService.AskScholarshipHistory(idUtils.getId(new User()).getId()));
     }
 
     /**
@@ -77,7 +82,7 @@ public class AskResumeController {
     @GetMapping("/resume/get_socialact")
     public Result AskResumeSocialact(){
         log.info("返回历史社会实践经历");
-        return Result.success("成功",askResumeService.AskSocialActHistory());
+        return Result.success("成功",askResumeService.AskSocialActHistory(idUtils.getId(new User()).getId()));
     }
 
 
@@ -88,7 +93,7 @@ public class AskResumeController {
     @GetMapping("/resume/get_work")
     public Result AskResumeWork() {
         log.info("返回历史工作经历");
-        return Result.success("成功",askResumeService.AskWorkHistory());
+        return Result.success("成功",askResumeService.AskWorkHistory(idUtils.getId(new User()).getId()));
     }
 
     /**
@@ -98,7 +103,7 @@ public class AskResumeController {
     @GetMapping("/resume/get_project")
     public Result AskResumeProject() {
         log.info("返回历史项目经历");
-        return Result.success("成功",askResumeService.AskProjectHistory());
+        return Result.success("成功",askResumeService.AskProjectHistory(idUtils.getId(new User()).getId()));
     }
 
     /**
