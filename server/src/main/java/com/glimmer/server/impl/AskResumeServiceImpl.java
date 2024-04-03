@@ -2,6 +2,7 @@ package com.glimmer.server.impl;
 
 
 import com.glimmer.dto.*;
+import com.glimmer.entity.User;
 import com.glimmer.exception.BaseException;
 import com.glimmer.mapper.AskMapper;
 import com.glimmer.server.AskResumeService;
@@ -26,9 +27,9 @@ public class AskResumeServiceImpl implements AskResumeService {
 
 
     @Override
-    @Cacheable(cacheNames = "clubInfoCache", key = "#result.foreignKey")
-    public ClubInfo AskClubHistory() {
-        ClubInfo clubInfo = askMapper.AskClubHistory(idUtils.getId().getId());
+    @Cacheable(cacheNames = "clubInfoCache", key = "#foreignKey")
+    public ClubInfo AskClubHistory(Integer foreignKey) {
+        ClubInfo clubInfo = askMapper.AskClubHistory(foreignKey);
         //如果返回空值说明数据不存在
         if (clubInfo == null){
             throw new BaseException("数据不存在");
@@ -37,9 +38,9 @@ public class AskResumeServiceImpl implements AskResumeService {
     }
 
     @Override
-    @Cacheable(cacheNames = "positionInfoCache", key = "#result.foreignKey")
-    public PositionInfo AskPositionHistory() {
-        PositionInfo positionInfo = askMapper.AskPositionHistory(idUtils.getId().getId());
+    @Cacheable(cacheNames = "positionInfoCache", key = "#foreignKey")
+    public PositionInfo AskPositionHistory(Integer foreignKey) {
+        PositionInfo positionInfo = askMapper.AskPositionHistory(foreignKey);
         //如果返回空值说明数据不存在
         if (positionInfo == null){
             throw new BaseException("数据不存在");
@@ -49,9 +50,9 @@ public class AskResumeServiceImpl implements AskResumeService {
     }
 
     @Override
-    @Cacheable(cacheNames = "scholarshipInfoCache", key = "#result.foreignKey")
-    public ScholarshipInfo AskScholarshipHistory() {
-        ScholarshipInfo scholarshipInfo = askMapper.AskScholarshipHistory(idUtils.getId().getId());
+    @Cacheable(cacheNames = "scholarshipInfoCache", key = "#foreignKey")
+    public ScholarshipInfo AskScholarshipHistory(Integer foreignKey) {
+        ScholarshipInfo scholarshipInfo = askMapper.AskScholarshipHistory(foreignKey);
         //如果返回空值说明数据不存在
         if (scholarshipInfo == null){
             throw new BaseException("数据不存在");
@@ -61,9 +62,9 @@ public class AskResumeServiceImpl implements AskResumeService {
     }
 
     @Override
-    @Cacheable(cacheNames = "socialactInfo", key = "#result.foreignKey")
-    public SocialactInfo AskSocialActHistory() {
-        SocialactInfo socialactInfo = askMapper.AskSocialActHistory(idUtils.getId().getId());
+    @Cacheable(cacheNames = "socialactInfo", key = "#foreignKey")
+    public SocialactInfo AskSocialActHistory(Integer foreignKey) {
+        SocialactInfo socialactInfo = askMapper.AskSocialActHistory(foreignKey);
         //如果返回空值说明数据不存在
         if (socialactInfo == null){
             throw new BaseException("数据不存在");
@@ -72,9 +73,9 @@ public class AskResumeServiceImpl implements AskResumeService {
     }
 
     @Override
-    @Cacheable(cacheNames = "educationInfoCache", key = "#result.foreignKey")
-    public EducationInfo AskEducationHistory() {
-        EducationInfo educationInfo = askMapper.AskEducationHistory(idUtils.getId().getId());
+    @Cacheable(cacheNames = "educationInfoCache", key = "#foreignKey")
+    public EducationInfo AskEducationHistory(Integer foreignKey) {
+        EducationInfo educationInfo = askMapper.AskEducationHistory(foreignKey);
         //如果返回空值说明数据不存在
         if (educationInfo == null){
             throw new BaseException("数据不存在");
@@ -83,9 +84,9 @@ public class AskResumeServiceImpl implements AskResumeService {
     }
 
     @Override
-    @Cacheable(cacheNames = "projectInfoCache", key = "#result.experience.foreignKey")
-    public ProjectExperienceInfo AskProjectHistory() {
-        ProjectExperienceInfo projectExperienceInfo = askMapper.AskProjectHistory(idUtils.getId().getId());
+    @Cacheable(cacheNames = "projectInfoCache", key = "#foreignKey")
+    public ProjectExperienceInfo AskProjectHistory(Integer foreignKey) {
+        ProjectExperienceInfo projectExperienceInfo = askMapper.AskProjectHistory(foreignKey);
         //如果返回空值说明数据不存在
         if (projectExperienceInfo == null){
             throw new BaseException("数据不存在");
@@ -94,9 +95,9 @@ public class AskResumeServiceImpl implements AskResumeService {
     }
 
     @Override
-    @Cacheable(cacheNames = "workExperienceEntityCache", key = "#result.experience.foreignKey")
-    public WorkExperienceInfo AskWorkHistory() {
-        WorkExperienceInfo workExperienceInfo = askMapper.AskWorkHistory(idUtils.getId().getId());
+    @Cacheable(cacheNames = "workExperienceEntityCache", key = "#foreignKey")
+    public WorkExperienceInfo AskWorkHistory(Integer foreignKey) {
+        WorkExperienceInfo workExperienceInfo = askMapper.AskWorkHistory(foreignKey);
         //如果返回空值说明数据不存在
         if (workExperienceInfo == null){
             throw new BaseException("数据不存在");
@@ -105,9 +106,9 @@ public class AskResumeServiceImpl implements AskResumeService {
     }
 
     @Override
-    @Cacheable(cacheNames = "baseInfoCache", key = "#idUtils.getId()")
-    public BaseInfo AskBaseHistory() {
-        BaseInfo baseInfo = askMapper.AskBaseHistory(idUtils.getId().getId());        //如果返回空值说明数据不存在
+    @Cacheable(cacheNames = "baseInfoCache", key = "#foreignKey")
+    public BaseInfo AskBaseHistory(Integer foreignKey) {
+        BaseInfo baseInfo = askMapper.AskBaseHistory(foreignKey);        //如果返回空值说明数据不存在
         if (baseInfo == null){
             throw new BaseException("数据不存在");
         }

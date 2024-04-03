@@ -2,6 +2,7 @@ package com.glimmer.server.impl;
 
 import com.glimmer.clients.JobRecommendationClient;
 import com.glimmer.entity.PdfUrl;
+import com.glimmer.entity.User;
 import com.glimmer.mapper.FillInResumeMapper;
 import com.glimmer.rro.CapaEvaluaRespond;
 import com.glimmer.rro.JobRecommendRespond;
@@ -37,7 +38,7 @@ public class JobCommendServiceImpl implements JobCommandService {
 
     @Override
     public Jobs getJobRecon() {
-        PdfUrl[] pdfUrls = fillInResumeMapper.getResumePdfUrl(idUtils.getId().getId());
+        PdfUrl[] pdfUrls = fillInResumeMapper.getResumePdfUrl(idUtils.getId(new User()).getId());
 
         String url = pdfUrls[0].getUrl();
 
