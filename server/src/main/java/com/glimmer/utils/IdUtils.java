@@ -33,7 +33,7 @@ public class IdUtils {
 
     private static final String signKey = "EmploymentSystem";
 
-    @Cacheable(cacheNames = "userCache", key = "#result.id")
+//    @Cacheable(cacheNames = "userCache", key = "#result.id")
     public CacheData getId() {
 
         HttpServletRequest request = ((ServletRequestAttributes) Objects.requireNonNull(RequestContextHolder.getRequestAttributes()))
