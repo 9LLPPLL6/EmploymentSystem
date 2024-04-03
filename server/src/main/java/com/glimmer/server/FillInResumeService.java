@@ -5,22 +5,22 @@ import org.springframework.web.multipart.MultipartFile;
 
 public interface FillInResumeService {
     //填写简历基本信息
-    BaseInfo FillInResumeBaseInfo(BaseInfo baseInfo, Integer id);
+    void FillInResumeBaseInfo(BaseInfo baseInfo, Integer id);
 
     //填写简历教育信息
-    EducationInfo FillInResumeEducationInfo(EducationInfo educationInfo, Integer id);
+    void FillInResumeEducationInfo(EducationInfo educationInfo, Integer id);
 
     //填写简历社团在校信息
-    ClubInfo FillInResumeClubInfo(ClubInfo clubInfo, Integer id);
+    void FillInResumeClubInfo(ClubInfo clubInfo, Integer id);
 
     //填写简历学生职务信息
-    PositionInfo FillInResumePositionInfo(PositionInfo positionInfo, Integer id);
+    void FillInResumePositionInfo(PositionInfo positionInfo, Integer id);
 
     //填写简历奖学金信息
-    ScholarshipInfo FillInResumeScholarshipInfo(ScholarshipInfo scholarshipInfo, Integer id);
+    void FillInResumeScholarshipInfo(ScholarshipInfo scholarshipInfo, Integer id);
 
     //填写简历社会实践信息
-    SocialactInfo FillInResumeSocialActInfo(SocialactInfo socialactInfo, Integer id);
+    void FillInResumeSocialActInfo(SocialactInfo socialactInfo, Integer id);
 
     //填写简历工作经历信息
     void FillInResumeWorkExperienceInfo(WorkExperienceInfo workExperienceInfo,Integer foreignKey);
