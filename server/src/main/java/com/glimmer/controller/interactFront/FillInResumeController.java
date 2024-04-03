@@ -144,7 +144,7 @@ public class FillInResumeController {
     public Result<StatusVo> FillInResumeWorkExperienceInfo(@RequestBody WorkExperienceInfo workExperienceInfo){
         log.info("填写简历工作经历信息:{}",workExperienceInfo);
 
-        fillInResumeService.FillInResumeWorkExperienceInfo(workExperienceInfo);
+        fillInResumeService.FillInResumeWorkExperienceInfo(workExperienceInfo,idUtils.getId(new User()).getId());
 
         StatusVo statusVo = StatusVo.builder()
                 .status(1)
@@ -162,7 +162,7 @@ public class FillInResumeController {
     public Result<StatusVo> FillInResumeWorkExperienceInfo(@RequestBody ProjectExperienceInfo projectExperienceInfo){
         log.info("填写简历项目经历信息:{}",projectExperienceInfo);
 
-        fillInResumeService.FillInResumeProjectExperienceInfo(projectExperienceInfo);
+        fillInResumeService.FillInResumeProjectExperienceInfo(projectExperienceInfo,idUtils.getId(new User()).getId());
 
         StatusVo statusVo = StatusVo.builder()
                 .status(1)

@@ -140,7 +140,7 @@ public class FillInResumeServiceImpl implements FillInResumeService {
     }
 
     //填写单个工作经历
-    @CachePut(cacheNames = "workExperienceEntityCache", key = "#foreignKey")
+//    @CachePut(cacheNames = "workExperienceEntityCache", key = "#foreignKey")
     public Integer FillInResumeWorkExperienceInfo(WorkExperienceEntity workExperienceEntity, Integer foreignKey){
         if (workExperienceEntity.getCompanyName() == null
                 || workExperienceEntity.getPositionName() == null
@@ -156,13 +156,13 @@ public class FillInResumeServiceImpl implements FillInResumeService {
 
     //填写简历工作经历信息service
     @Override
-    public void FillInResumeWorkExperienceInfo(WorkExperienceInfo workExperienceInfo) {
+    @CachePut(cacheNames = "workExperienceEntityCache", key = "#foreignKey")
+    public void FillInResumeWorkExperienceInfo(WorkExperienceInfo workExperienceInfo,Integer foreignKey) {
         log.info("填写简历工作经历信息service");
 
 
         WorkExperienceEntity workExperienceEntity;
         WorkExperienceEntity[] experience = workExperienceInfo.getExperience();
-        Integer foreignKey = idUtils.getId(new User()).getId();
 
         for (int i = 0; i < experience.length; i++) {
             workExperienceEntity = experience[i];
@@ -172,7 +172,7 @@ public class FillInResumeServiceImpl implements FillInResumeService {
 
 
     //填写单个项目经历
-    @CachePut(cacheNames = "projectInfoCache", key = "#foreignKey")
+//    @CachePut(cacheNames = "projectInfoCache", key = "#foreignKey")
     public Integer FillInResumeProjectExperienceInfo(ProjectInfo projectInfo, Integer foreignKey) {
         if (projectInfo.getProjectName() == null
                 || projectInfo.getProjectPostion() == null
@@ -187,12 +187,12 @@ public class FillInResumeServiceImpl implements FillInResumeService {
 
     //填写简历项目经历信息service
     @Override
-    public void FillInResumeProjectExperienceInfo(ProjectExperienceInfo projectExperienceInfo) {
+    @CachePut(cacheNames = "projectInfoCache", key = "#foreignKey")
+    public void FillInResumeProjectExperienceInfo(ProjectExperienceInfo projectExperienceInfo,Integer foreignKey) {
         log.info("填写简历项目经历信息service");
 
         ProjectInfo projectInfo;
         ProjectInfo[] experience = projectExperienceInfo.getExperience();
-        Integer foreignKey = idUtils.getId(new User()).getId();
 
         for (int i = 0; i < experience.length; i++) {
             projectInfo = experience[i];

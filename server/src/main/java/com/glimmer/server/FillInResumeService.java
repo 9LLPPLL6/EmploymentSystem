@@ -23,10 +23,10 @@ public interface FillInResumeService {
     SocialactInfo FillInResumeSocialActInfo(SocialactInfo socialactInfo, Integer id);
 
     //填写简历工作经历信息
-    void FillInResumeWorkExperienceInfo(WorkExperienceInfo workExperienceInfo);
+    void FillInResumeWorkExperienceInfo(WorkExperienceInfo workExperienceInfo,Integer foreignKey);
 
     //填写简历项目经历信息
-    public void FillInResumeProjectExperienceInfo(ProjectExperienceInfo projectExperienceInfo);
+    public void FillInResumeProjectExperienceInfo(ProjectExperienceInfo projectExperienceInfo,Integer foreignKey);
 
     //上传简历pdf
     public void UploadPdf(MultipartFile multipartFile);
