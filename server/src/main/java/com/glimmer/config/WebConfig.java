@@ -16,7 +16,12 @@ public class WebConfig implements WebMvcConfigurer {
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(loginCheckInterceptor).addPathPatterns("/**").excludePathPatterns("/signup").excludePathPatterns("/login");
+        registry.addInterceptor(loginCheckInterceptor)
+                .addPathPatterns("/**")
+                .excludePathPatterns("/signup")
+                .excludePathPatterns("/login")
+                .excludePathPatterns("/evaluatetest")
+                .excludePathPatterns("/jobstest");
     }
 
     //跨域配置
