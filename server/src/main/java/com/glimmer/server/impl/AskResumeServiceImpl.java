@@ -118,7 +118,7 @@ public class AskResumeServiceImpl implements AskResumeService {
 
     @Override
     @Cacheable(cacheNames = "baseInfoCache", key = "#id")
-    public BaseInfo AskLatestBaseHistory(Integer id) {
+    public BaseInfo FindBaseHistory(Integer id) {
         BaseInfo baseInfo = askMapper.FindBaseHistory(id);        //如果返回空值说明数据不存在
         if (baseInfo == null){
             throw new BaseException("数据不存在");

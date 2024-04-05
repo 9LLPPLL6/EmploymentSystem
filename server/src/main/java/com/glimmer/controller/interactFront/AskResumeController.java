@@ -113,7 +113,7 @@ public class AskResumeController {
     @GetMapping("/resume/find_base")
     public Result<BaseInfo> FindBase(Integer id) {
         log.info("返回个人基本信息");
-        return Result.success("成功",askResumeService.AskLatestBaseHistory(id));
+        return Result.success("成功",askResumeService.FindBaseHistory(id));
     }
 
     /**
