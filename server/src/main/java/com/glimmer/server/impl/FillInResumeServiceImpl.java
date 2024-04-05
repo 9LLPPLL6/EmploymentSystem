@@ -157,9 +157,9 @@ public class FillInResumeServiceImpl implements FillInResumeService {
         WorkExperienceEntity workExperienceEntity;
         WorkExperienceEntity[] experience = workExperienceInfo.getExperience();
 
-        for (int i = 0; i < experience.length; i++) {
-            workExperienceEntity = experience[i];
-            this.FillInResumeWorkExperienceInfo(workExperienceEntity,foreignKey);
+        for (WorkExperienceEntity experienceEntity : experience) {
+            workExperienceEntity = experienceEntity;
+            this.FillInResumeWorkExperienceInfo(workExperienceEntity, foreignKey);
         }
     }
 
@@ -186,9 +186,9 @@ public class FillInResumeServiceImpl implements FillInResumeService {
         ProjectInfo projectInfo;
         ProjectInfo[] experience = projectExperienceInfo.getExperience();
 
-        for (int i = 0; i < experience.length; i++) {
-            projectInfo = experience[i];
-            this.FillInResumeProjectExperienceInfo(projectInfo,foreignKey);
+        for (ProjectInfo info : experience) {
+            projectInfo = info;
+            this.FillInResumeProjectExperienceInfo(projectInfo, foreignKey);
         }
     }
 
@@ -205,8 +205,8 @@ public class FillInResumeServiceImpl implements FillInResumeService {
         } else {
             //将远端oss的pdf文件删除
             PdfUrl[] pdfUrls = fillInResumeMapper.getResumePdfUrl(idUtils.getId(new User()).getId());
-            for (int i = 0; i < pdfUrls.length; i++) {
-                String url = pdfUrls[i].getUrl();
+            for (PdfUrl value : pdfUrls) {
+                String url = value.getUrl();
                 DeleteResumePdf.deletePdf(url);
             }
             //删除数据库的相关信息
@@ -220,7 +220,7 @@ public class FillInResumeServiceImpl implements FillInResumeService {
     //获取简历url
     @Override
     public String GetResumePdfUrl() {
-        String url = null;
+        String url;
 
         PdfUrl[] pdfUrls = fillInResumeMapper.getResumePdfUrl(idUtils.getId(new User()).getId());
 
