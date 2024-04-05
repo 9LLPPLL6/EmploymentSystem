@@ -41,7 +41,7 @@ public class CapaEvaluaServiceImpl implements CapaEvaluaService {
     public CapaEvaluaRespond getcapaEvalua(String desiredPosition) {
         PdfUrl[] pdfUrls = fillInResumeMapper.getResumePdfUrl(idUtils.getId(new User()).getId());
 
-        String mlUrl = "http://localhost:15213/evaluatetest";
+        String mlUrl = "http://113.54.236.190:5000";
 
         if (pdfUrls == null) {
             return null;

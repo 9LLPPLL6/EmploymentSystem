@@ -42,7 +42,7 @@ public class JobCommendServiceImpl implements JobCommandService {
 
         String url = pdfUrls[0].getUrl();
 
-        String mlUrl = "http://localhost:15213/jobstest";
+        String mlUrl = "http://113.54.236.190:5000/commend";
 
         if (url==null){
             return  null;

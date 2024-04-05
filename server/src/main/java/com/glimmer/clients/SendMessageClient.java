@@ -4,6 +4,7 @@ import com.dtflys.forest.annotation.*;
 
 
 import com.glimmer.Request.Requirement;
+import com.glimmer.entity.User;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -29,7 +30,7 @@ public interface SendMessageClient {
      * @return 推荐的人员名单
      */
 
-    @Post(url = "服务端")
-    String sendRequirement(@JSONBody Requirement requirement);
+    @Post(url = "http://113.54.236.190:5000/hr")
+    User sendRequirement(@JSONBody Requirement requirement);
 
 }

@@ -43,11 +43,15 @@ public class IdUtils {
             //返回空值说明数据不存在
             throw new UserException("用户不存在");
         }
-        return user;
-//        String username = "tom";
+
+//        String username = "lpl";
 //        String password = "123456";
-//
-//        return idMapper.selectId(username, password);
+//        user.setPassword(password);
+//        user.setUsername(username);
+//        user.setId(idMapper.selectId(user));
+
+        return user;
+
     }
 
 

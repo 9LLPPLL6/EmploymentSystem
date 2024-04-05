@@ -10,6 +10,7 @@ import com.glimmer.server.FillInResumeService;
 import com.glimmer.utils.DeleteResumePdf;
 import com.glimmer.utils.IdUtils;
 import com.glimmer.utils.UploadFile;
+import com.sun.xml.bind.v2.TODO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CachePut;
@@ -212,7 +213,13 @@ public class FillInResumeServiceImpl implements FillInResumeService {
         log.info("上传简历PDF service");
 
         String pdfUrl = UploadFile.uploadFile(multipartFile);
-        sendMessageClient.sendPDF(multipartFile);
+
+        /**
+         * TODO
+         * 测试注释掉
+         */
+        //sendMessageClient.sendPDF(multipartFile);
+
         if (pdfUrl == null) {
             throw new PdfNullException("简历PDF的URL为null");
         } else {
