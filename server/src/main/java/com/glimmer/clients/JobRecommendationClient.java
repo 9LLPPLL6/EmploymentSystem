@@ -4,6 +4,7 @@ import com.glimmer.rro.JobRecommendRespond;
 import com.glimmer.rro.Jobs;
 import feign.Param;
 import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -15,6 +16,7 @@ import java.util.List;
  * 返回推荐职位
  */
 @FeignClient("jobRecommendation")
+@Component
 public interface JobRecommendationClient {
 
 //    //向机器学习后端上传简历

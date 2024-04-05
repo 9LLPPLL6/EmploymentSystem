@@ -10,6 +10,7 @@ import com.glimmer.server.FillInResumeService;
 import com.glimmer.utils.DeleteResumePdf;
 import com.glimmer.utils.IdUtils;
 import com.glimmer.utils.UploadFile;
+import com.sun.xml.bind.v2.TODO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CachePut;
@@ -55,6 +56,7 @@ public class FillInResumeServiceImpl implements FillInResumeService {
 
     //填写简历教育信息service
     @Override
+    @Transactional
     @CachePut(cacheNames = "educationInfoCache", key = "#foreignKey")
     public void FillInResumeEducationInfo(EducationInfo educationInfo, Integer foreignKey) {
         log.info("填写简历教育信息service");
@@ -65,6 +67,7 @@ public class FillInResumeServiceImpl implements FillInResumeService {
             throw new ResumeEducationInfoFillException("简历教育信息填写异常，有信息为null");
         }
 
+        fillInResumeMapper.deleteResumeEducationInfo(foreignKey);
         fillInResumeMapper.fillInResumeEducationInfo(educationInfo, foreignKey);
         educationInfo.setForeignKey(foreignKey);
     }
@@ -72,6 +75,7 @@ public class FillInResumeServiceImpl implements FillInResumeService {
     //填写简历社团在校信息service
     @Override
     @CachePut(cacheNames = "clubInfoCache", key = "#foreignKey")
+    @Transactional
     public void FillInResumeClubInfo(ClubInfo clubInfo, Integer foreignKey) {
         log.info("填写简历社团在校信息service");
         if (clubInfo.getClubName() == null
@@ -81,12 +85,15 @@ public class FillInResumeServiceImpl implements FillInResumeService {
             throw new ResumeClubInfoFillException("简历社团在校信息填写异常，有信息为null");
         }
 
+        fillInResumeMapper.deleteResumeClubInfo(foreignKey);
+
         fillInResumeMapper.fillInResumeClubInfo(clubInfo, foreignKey);
         clubInfo.setForeignKey(foreignKey);
     }
 
     //填写简历学生职务信息service
     @Override
+    @Transactional
     @CachePut(cacheNames = "positionInfoCache", key = "#foreignKey")
     public void FillInResumePositionInfo(PositionInfo positionInfo, Integer foreignKey) {
         log.info("填写简历学生职务信息service");
@@ -97,12 +104,15 @@ public class FillInResumeServiceImpl implements FillInResumeService {
             throw new ResumePositionInfoFillException("简历学生职务信息填写异常，有信息为null");
         }
 
+        fillInResumeMapper.deleteResumePositionInfo(foreignKey);
+
         fillInResumeMapper.fillInResumePositionInfo(positionInfo, foreignKey);
         positionInfo.setForeignKey(foreignKey);
     }
 
     //填写简历奖学金信息service
     @Override
+    @Transactional
     @CachePut(cacheNames = "scholarshipInfoCache", key = "#foreignKey")
     public void FillInResumeScholarshipInfo(ScholarshipInfo scholarshipInfo, Integer foreignKey) {
         log.info("填写简历奖学金信息service");
@@ -113,12 +123,15 @@ public class FillInResumeServiceImpl implements FillInResumeService {
             throw new ResumeScholarshipInfoException("简历奖学金信息填写异常，有信息为null");
         }
 
+        fillInResumeMapper.deleteResumeScholarshipInfo(foreignKey);
+
         fillInResumeMapper.fillInResumeScholarshipInfo(scholarshipInfo, foreignKey);
         scholarshipInfo.setForeignKey(foreignKey);
     }
 
     //填写简历社会实践信息service
     @Override
+    @Transactional
     @CachePut(cacheNames = "socialactInfo", key = "#foreignKey")
     public void FillInResumeSocialActInfo(SocialactInfo socialactInfo, Integer foreignKey) {
         log.info("填写简历社会实践信息service");
@@ -129,6 +142,7 @@ public class FillInResumeServiceImpl implements FillInResumeService {
             throw new ResumeSocialActException("简历社会实践信息填写异常，有信息为null");
         }
 
+        fillInResumeMapper.deleteResumeSocialInfo(foreignKey);
         fillInResumeMapper.fillInResumeSocialActInfo(socialactInfo, foreignKey);
         socialactInfo.setForeignKey(foreignKey);
     }
@@ -199,7 +213,13 @@ public class FillInResumeServiceImpl implements FillInResumeService {
         log.info("上传简历PDF service");
 
         String pdfUrl = UploadFile.uploadFile(multipartFile);
-        sendMessageClient.sendPDF(multipartFile);
+
+        /**
+         * TODO
+         * 测试注释掉
+         */
+        //sendMessageClient.sendPDF(multipartFile);
+
         if (pdfUrl == null) {
             throw new PdfNullException("简历PDF的URL为null");
         } else {
