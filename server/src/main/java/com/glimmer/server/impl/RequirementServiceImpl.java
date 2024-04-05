@@ -13,6 +13,7 @@ import com.glimmer.exception.BaseException;
 import com.glimmer.mapper.AskMapper;
 import com.glimmer.mapper.IdMapper;
 import com.glimmer.server.RequirementService;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -29,7 +30,7 @@ public class RequirementServiceImpl implements RequirementService {
     private AskMapper askMapper;
 
     @Override
-    public RecommendUser sendRequirement(Requirement requirement){
+    public List<Recommendation> sendRequirement(Requirement requirement){
 
         List<Recommendation> recommendationList = null;
         RecommendUser recommendUser = sendMessageClient.sendRequirement(requirement);
@@ -47,6 +48,6 @@ public class RequirementServiceImpl implements RequirementService {
             }
         }
 
-        return null;
+        return recommendationList;
     }
 }

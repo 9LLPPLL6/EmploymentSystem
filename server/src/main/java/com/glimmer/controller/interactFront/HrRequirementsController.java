@@ -2,14 +2,11 @@ package com.glimmer.controller.interactFront;
 
 
 import com.glimmer.Request.Requirement;
-import com.glimmer.entity.RecommendUser;
-import com.glimmer.entity.User;
-import com.glimmer.mapper.IdMapper;
+import com.glimmer.dto.Recommendation;
 import com.glimmer.result.Result;
 import com.glimmer.server.RequirementService;
 import com.glimmer.vo.StatusVo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -23,8 +20,8 @@ public class HrRequirementsController {
     private RequirementService requirementService;
     @PostMapping("/requirement")
     Result<StatusVo> UpLoadRequirement(@RequestBody Requirement requirement){
-        RecommendUser recommendation = requirementService.sendRequirement(requirement);
-        if (recommendation == null){
+        List<Recommendation> recommendationList = requirementService.sendRequirement(requirement);
+        if (recommendationList == null){
             StatusVo statusVo = StatusVo.builder()
                     .status(0)
                     .message("没有合适的推荐")
@@ -34,7 +31,7 @@ public class HrRequirementsController {
 
         StatusVo statusVo = StatusVo.builder()
                 .status(1)
-                .message(recommendation.toString())
+                .message(recommendationList.toString())
                 .build();
         return Result.success("成功",statusVo);
     }
