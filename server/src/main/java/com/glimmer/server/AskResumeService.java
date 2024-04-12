@@ -3,6 +3,7 @@ package com.glimmer.server;
 
 
 import com.glimmer.dto.*;
+import com.glimmer.entity.User;
 
 import java.util.List;
 
@@ -15,7 +16,7 @@ public interface AskResumeService {
 
     WorkExperienceInfo AskWorkHistory(Integer foreignKey);
 
-    BaseInfo AskLatestBaseHistory(Integer id);
+    BaseInfo FindBaseHistory(Integer id);
 
     ClubInfo AskClubHistory(Integer foreignKey);
 

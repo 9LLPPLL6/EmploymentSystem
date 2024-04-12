@@ -11,4 +11,7 @@ import org.springframework.cache.annotation.Cacheable;
 public interface IdMapper {
     @Select("select id from employment_system.users where username = #{username} and password = #{password}")
     Integer selectId(User user);
+
+    @Select("select * from employment_system.users where username = #{username}")
+    User selectUser(String username);
 }
