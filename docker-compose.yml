@@ -13,8 +13,8 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: 200296lpl
       MYSQL_DATABASE: employment_system
-      MYSQL_USER: root
-      MYSQL_PASSWORD: 200296lpl
+      MYSQL_USER: lpl
+      MYSQL_PASSWORD: 200296lpl.
     volumes:
       - mysql-data:/var/lib/mysql
   redis:
