@@ -2,6 +2,7 @@ package com.glimmer.controller.interactFront;
 
 
 import com.glimmer.Request.Requirement;
+import com.glimmer.entity.RecommendUser;
 import com.glimmer.result.Result;
 import com.glimmer.server.RequirementService;
 import com.glimmer.vo.StatusVo;
@@ -21,7 +22,7 @@ public class HrRequirementsController {
 
     @PostMapping("/requirement")
     Result<StatusVo> UpLoadRequirement(@RequestBody Requirement requirement){
-        List<String> recommendation = requirementService.sendRequirement(requirement);
+        RecommendUser recommendation = requirementService.sendRequirement(requirement);
         if (recommendation == null){
             StatusVo statusVo = StatusVo.builder()
                     .status(0)

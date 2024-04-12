@@ -26,6 +26,9 @@ import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
+/**
+ * 岗位推荐
+ */
 @Service
 public class JobCommendServiceImpl implements JobCommandService {
 
@@ -42,7 +45,7 @@ public class JobCommendServiceImpl implements JobCommandService {
 
         String url = pdfUrls[0].getUrl();
 
-        String mlUrl = "http://113.54.236.190:5000/commend";
+        String mlUrl = "http://113.54.246.39:5000/comment";
 
         if (url==null){
             return  null;
@@ -66,8 +69,8 @@ public class JobCommendServiceImpl implements JobCommandService {
             params.add("resumePdf",new FileSystemResource(fileTmp));
 
             HttpEntity<MultiValueMap<String,Object>> requestEntity = new HttpEntity<>(params,httpHeaders);
-            ResponseEntity<Jobs> responseEntity = restTemplate.postForEntity(mlUrl,requestEntity,Jobs.class);
-
+           ResponseEntity<Jobs> responseEntity = restTemplate.postForEntity(mlUrl,requestEntity,Jobs.class);
+           // System.out.println(responseEntity);
             Jobs jobs = responseEntity.getBody();
             fileTmp.delete();
             return jobs;

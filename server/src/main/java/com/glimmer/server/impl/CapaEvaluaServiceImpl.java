@@ -25,7 +25,9 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.File;
 import java.io.IOException;
 
-
+/**
+ * 能力评价
+ */
 @Slf4j
 @Service
 public class CapaEvaluaServiceImpl implements CapaEvaluaService {
@@ -39,8 +41,8 @@ public class CapaEvaluaServiceImpl implements CapaEvaluaService {
     @Override
     public CapaEvaluaRespond getcapaEvalua(String desiredPosition) {
         PdfUrl[] pdfUrls = fillInResumeMapper.getResumePdfUrl(idUtils.getId(new User()).getId());
-
-        String mlUrl = "http://113.54.236.190:5000";
+        log.info("能力评价发请求机器学习");
+        String mlUrl = "http://113.54.246.39:5000/recommend";
 
         if (pdfUrls == null) {
             return null;
@@ -67,10 +69,11 @@ public class CapaEvaluaServiceImpl implements CapaEvaluaService {
 
             HttpEntity<MultiValueMap<String,Object>> requestEntity = new HttpEntity<>(params,httpHeaders);
             ResponseEntity<CapaEvaluaRespond> responseEntity = restTemplate.postForEntity(mlUrl,requestEntity, CapaEvaluaRespond.class);
-
+//            String responseEntity = restTemplate.postForEntity(mlUrl,requestEntity, String.class).toString();
             CapaEvaluaRespond capaEvaluaRespond = responseEntity.getBody();
             fileTmp.delete();
-
+            //System.out.println(responseEntity);
+            //return null;
             return capaEvaluaRespond;
         }
     }

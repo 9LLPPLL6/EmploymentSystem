@@ -30,7 +30,7 @@ public interface SendMessageClient {
      * @return 推荐的人员名单
      */
 
-    @Post(url = "http://113.54.236.190:5000/hr")
-    User sendRequirement(@JSONBody Requirement requirement);
+    @Post(url = "http://113.54.246.39:5000/recommend")
+    String sendRequirement(@JSONBody Requirement requirement);
 
 }

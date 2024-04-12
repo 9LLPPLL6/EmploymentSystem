@@ -1,0 +1,22 @@
+version: '3'
+services:
+  app:
+    build: .
+    ports:
+      - 15213:15213
+    depends_on:
+      - mysql
+      - redis
+  mysql:
+    image: mysql:latest
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: 200296lpl
+      MYSQL_DATABASE: employment_system
+      MYSQL_USER: root
+      MYSQL_PASSWORD: 200296lpl
+    volumes:
+      - mysql-data:/var/lib/mysql
+  redis:
+    image: redis:latest
+    restart: always

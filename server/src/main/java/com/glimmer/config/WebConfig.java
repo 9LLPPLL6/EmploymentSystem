@@ -14,15 +14,15 @@ public class WebConfig implements WebMvcConfigurer {
     @Autowired
     private LoginCheckInterceptor loginCheckInterceptor;
 
-    @Override
-    public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(loginCheckInterceptor)
-                .addPathPatterns("/**")
-                .excludePathPatterns("/signup")
-                .excludePathPatterns("/login")
-                .excludePathPatterns("/evaluatetest")
-                .excludePathPatterns("/jobstest");
-    }
+//    @Override
+//    public void addInterceptors(InterceptorRegistry registry) {
+//        registry.addInterceptor(loginCheckInterceptor)
+//                .addPathPatterns("/**")
+//                .excludePathPatterns("/signup")
+//                .excludePathPatterns("/login")
+//                .excludePathPatterns("/evaluatetest")
+//                .excludePathPatterns("/jobstest");
+//    }
 
     //跨域配置
     @Override

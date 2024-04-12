@@ -41,6 +41,11 @@ public class FillInResumeController {
 //                .status(1)
 //                .message("简历基本信息填写成功")
 //                .build();
+//        try {
+//            Thread.sleep(100);
+//        } catch (InterruptedException e) {
+//            throw new RuntimeException(e);
+//        }
 //        return Result.success("成功",statusVo);
 
         fillInResumeService.FillInResumeBaseInfo(baseInfo,idUtils.getId(new User()).getId());
