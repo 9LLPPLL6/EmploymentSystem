@@ -1,4 +1,4 @@
-version: '3'
+version: '3.8'
 services:
   app:
     build: .
@@ -20,3 +20,5 @@ services:
   redis:
     image: redis:latest
     restart: always
+volumes:
+  mysql-data:

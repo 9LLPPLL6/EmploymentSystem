@@ -33,6 +33,11 @@ install_docker() {
     docker version
 }
 
+#安装 make
+install_make(){
+  sudo apt install make
+}
+
 # 安装 Docker Compose
 install_docker_compose() {
     # 下载 Docker Compose 二进制文件
@@ -51,6 +56,9 @@ main() {
 
     echo "开始安装 Docker Compose..."
     install_docker_compose
+
+    echo "开始安装make"
+    install_make
 
     echo "安装完成！"
 }
