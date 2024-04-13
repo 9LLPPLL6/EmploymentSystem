@@ -4,6 +4,7 @@ package com.glimmer.controller.interactFront;
 import cn.hutool.json.JSONUtil;
 import com.glimmer.Request.Requirement;
 import com.glimmer.dto.OfficerInfo;
+import com.glimmer.dto.Recommendation;
 import com.glimmer.entity.RecommendUser;
 import com.glimmer.result.Result;
 import com.glimmer.server.RequirementService;
@@ -25,7 +26,7 @@ public class HrRequirementsController {
 
     @PostMapping("/requirement")
     Result<StatusVo> UpLoadRequirement(@RequestBody Requirement requirement){
-        RecommendUser recommendation = requirementService.sendRequirement(requirement);
+        List<Recommendation> recommendation = requirementService.sendRequirement(requirement);
         if (recommendation == null){
             StatusVo statusVo = StatusVo.builder()
                     .status(0)

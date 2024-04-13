@@ -4,6 +4,7 @@ import com.dtflys.forest.annotation.*;
 
 
 import com.glimmer.Request.Requirement;
+import com.glimmer.entity.RecommendUser;
 import com.glimmer.entity.User;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
@@ -31,6 +32,6 @@ public interface SendMessageClient {
      */
 
     @Post(url = "http://113.54.246.39:5000/recommend")
-    String sendRequirement(@JSONBody Requirement requirement);
+    RecommendUser sendRequirement(@JSONBody Requirement requirement);
 
 }
