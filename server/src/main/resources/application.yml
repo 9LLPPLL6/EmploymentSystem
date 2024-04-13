@@ -11,7 +11,7 @@ spring:
     #设置数据库连接
     driver-class-name: com.mysql.cj.jdbc.Driver
 #    url: jdbc:mysql://mysql:3306/employment_system
-    username: mysql
+    username: lpl
     password: 200296lpl.
     url: jdbc:mysql://mysql:3306/employment_system?user=root&password=200296lpl&useUnicode=true&characterEncoding=UTF-8
 
