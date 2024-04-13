@@ -1,5 +1,5 @@
 
-SUDO ?=
+SUDO = sudo
 
 start:
 	$(SUDO) docker-compose up --build
