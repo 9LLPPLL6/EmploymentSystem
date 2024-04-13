@@ -13,7 +13,7 @@ spring:
 #    url: jdbc:mysql://mysql:3306/employment_system
     username: mysql
     password: 200296lpl.
-    url: jdbc:mysql://mysql/employment_system?user=lpl&password=200296lpl.&useUnicode=true&characterEncoding=UTF-8
+    url: jdbc:mysql://mysql/employment_system?user=root&password=200296lpl&useUnicode=true&characterEncoding=UTF-8
 
   servlet: #设置文件上传大小限制
     multipart:
