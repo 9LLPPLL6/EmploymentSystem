@@ -1,7 +1,8 @@
-CREATE USER 'lpl'@'%' IDENTIFIED BY '200296lpl.';
-CREATE DATABASE employment_system;
-GRANT ALL PRIVILEGES ON employment_system.* TO 'lpl'@'%';
-FLUSH PRIVILEGES;
+# CREATE USER 'lpl'@'%' IDENTIFIED BY '200296lpl.';
+# CREATE DATABASE employment_system;
+# GRANT ALL PRIVILEGES ON employment_system.* TO 'lpl'@'%';
+#
+# FLUSH PRIVILEGES;
 use employment_system;
 
 create table users
