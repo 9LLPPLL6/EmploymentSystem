@@ -3,6 +3,7 @@ D:\IdeaProjects\EmploymentReProject2\pojo\src\main\java\com\glimmer\dto\WorkExpe
 D:\IdeaProjects\EmploymentReProject2\pojo\src\main\java\com\glimmer\entity\RecommendUser.java
 D:\IdeaProjects\EmploymentReProject2\pojo\src\main\java\com\glimmer\rro\ProjectExperience.java
 D:\IdeaProjects\EmploymentReProject2\pojo\src\main\java\com\glimmer\entity\User.java
+D:\IdeaProjects\EmploymentReProject2\pojo\src\main\java\com\glimmer\dto\OfficerInfo.java
 D:\IdeaProjects\EmploymentReProject2\pojo\src\main\java\com\glimmer\rro\JobRecommendRespond.java
 D:\IdeaProjects\EmploymentReProject2\pojo\src\main\java\com\glimmer\Data\RedisData.java
 D:\IdeaProjects\EmploymentReProject2\pojo\src\main\java\com\glimmer\rro\CapaEvaluaRespond.java
@@ -18,8 +19,10 @@ D:\IdeaProjects\EmploymentReProject2\pojo\src\main\java\com\glimmer\rro\Jobs.jav
 D:\IdeaProjects\EmploymentReProject2\pojo\src\main\java\com\glimmer\dto\EducationInfo.java
 D:\IdeaProjects\EmploymentReProject2\pojo\src\main\java\com\glimmer\dto\ScholarshipInfo.java
 D:\IdeaProjects\EmploymentReProject2\pojo\src\main\java\com\glimmer\vo\ResumeUrlVo.java
+D:\IdeaProjects\EmploymentReProject2\pojo\src\main\java\com\glimmer\dto\AllRecommendation.java
 D:\IdeaProjects\EmploymentReProject2\pojo\src\main\java\com\glimmer\Data\CacheData.java
 D:\IdeaProjects\EmploymentReProject2\pojo\src\main\java\com\glimmer\rro\WorkExperience.java
+D:\IdeaProjects\EmploymentReProject2\pojo\src\main\java\com\glimmer\dto\Recommendation.java
 D:\IdeaProjects\EmploymentReProject2\pojo\src\main\java\com\glimmer\rro\MlReProjectInfo.java
 D:\IdeaProjects\EmploymentReProject2\pojo\src\main\java\com\glimmer\dto\WorkExperienceInfo.java
 D:\IdeaProjects\EmploymentReProject2\pojo\src\main\java\com\glimmer\entity\PdfUrl.java

@@ -8,7 +8,9 @@ services:
       - mysql
       - redis
   mysql:
-    image: mysql:latest
+    build:
+      context: .
+      dockerfile: Dockerfile.mysql
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: 200296lpl
