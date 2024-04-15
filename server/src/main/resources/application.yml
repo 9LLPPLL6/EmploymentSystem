@@ -11,9 +11,9 @@ spring:
     #设置数据库连接
     driver-class-name: com.mysql.cj.jdbc.Driver
 #    url: jdbc:mysql://mysql:3306/employment_system
-    username: lpl
-    password: 200296lpl.
-    url: jdbc:mysql://mysql:3306/employment_system?user=ru oot&password=200296lpl&useUnicode=true&characterEncoding=UTF-8
+    username: root
+    password: 200296lpl
+    url: jdbc:mysql://192.168.177.115:3306/employment_system?autoReconnect=true&useSSL=false
 
   servlet: #设置文件上传大小限制
     multipart:
