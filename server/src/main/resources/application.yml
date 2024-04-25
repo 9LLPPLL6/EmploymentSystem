@@ -1,6 +1,7 @@
 #端口号
 server:
   port: 15213
+  protocol: tcp
 spring:
   profiles:
     active: dev #设为开发环境
