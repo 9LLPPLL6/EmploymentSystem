@@ -8,6 +8,7 @@ com\glimmer\exception\ResumeSocialActException.class
 com\glimmer\exception\UserException.class
 com\glimmer\constant\RedisConstants.class
 com\glimmer\exception\ResumePositionInfoFillException.class
+com\glimmer\constant\Url.class
 com\glimmer\exception\EnvirVarException.class
 com\glimmer\constant\HttpStatusConstant.class
 com\glimmer\exception\ResumeClubInfoFillException.class

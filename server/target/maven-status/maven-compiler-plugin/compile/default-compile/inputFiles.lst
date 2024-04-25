@@ -15,6 +15,7 @@ D:\IdeaProjects\EmploymentReProject2\server\src\main\java\com\glimmer\clients\Se
 D:\IdeaProjects\EmploymentReProject2\server\src\main\java\com\glimmer\server\impl\FillInResumeServiceImpl.java
 D:\IdeaProjects\EmploymentReProject2\server\src\main\java\com\glimmer\server\impl\RequirementServiceImpl.java
 D:\IdeaProjects\EmploymentReProject2\server\src\main\java\com\glimmer\mapper\FillInResumeMapper.java
+D:\IdeaProjects\EmploymentReProject2\server\src\main\java\com\glimmer\utils\SendResume.java
 D:\IdeaProjects\EmploymentReProject2\server\src\main\java\com\glimmer\controller\ml\JobRecommendController.java
 D:\IdeaProjects\EmploymentReProject2\server\src\main\java\com\glimmer\server\LoginService.java
 D:\IdeaProjects\EmploymentReProject2\server\src\main\java\com\glimmer\server\impl\JobCommendServiceImpl.java

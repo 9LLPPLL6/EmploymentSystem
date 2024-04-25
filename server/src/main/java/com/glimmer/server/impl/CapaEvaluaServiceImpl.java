@@ -1,6 +1,7 @@
 package com.glimmer.server.impl;
 
 import com.glimmer.clients.CapaEvaluaClient;
+import com.glimmer.constant.Url;
 import com.glimmer.entity.PdfUrl;
 import com.glimmer.entity.User;
 import com.glimmer.mapper.FillInResumeMapper;
@@ -42,7 +43,7 @@ public class CapaEvaluaServiceImpl implements CapaEvaluaService {
     public CapaEvaluaRespond getcapaEvalua(String desiredPosition) {
         PdfUrl[] pdfUrls = fillInResumeMapper.getResumePdfUrl(idUtils.getId(new User()).getId());
         log.info("能力评价发请求机器学习");
-        String mlUrl = "http://113.54.246.39:5000/recommend";
+        String mlUrl = "http://"+ Url.mlUrl +":"+Url.port+"/recommend";
 
         if (pdfUrls == null) {
             return null;

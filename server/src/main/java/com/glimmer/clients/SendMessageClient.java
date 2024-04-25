@@ -4,6 +4,7 @@ import com.dtflys.forest.annotation.*;
 
 
 import com.glimmer.Request.Requirement;
+import com.glimmer.constant.Url;
 import com.glimmer.entity.RecommendUser;
 import com.glimmer.entity.User;
 import org.springframework.stereotype.Component;
@@ -31,7 +32,7 @@ public interface SendMessageClient {
      * @return 推荐的人员名单
      */
 
-    @Post(url = "http://113.54.246.39:5000/recommend")
+    @Post(url = "http://"+ Url.mlUrl +":"+Url.port+"/recommend")
     RecommendUser sendRequirement(@JSONBody Requirement requirement);
 
 }

@@ -7,6 +7,7 @@ D:\IdeaProjects\EmploymentReProject2\common\src\main\java\com\glimmer\exception\
 D:\IdeaProjects\EmploymentReProject2\common\src\main\java\com\glimmer\constant\HttpStatusConstant.java
 D:\IdeaProjects\EmploymentReProject2\common\src\main\java\com\glimmer\exception\GeturlException.java
 D:\IdeaProjects\EmploymentReProject2\common\src\main\java\com\glimmer\exception\ResumeSocialActException.java
+D:\IdeaProjects\EmploymentReProject2\common\src\main\java\com\glimmer\constant\Url.java
 D:\IdeaProjects\EmploymentReProject2\common\src\main\java\com\glimmer\exception\ResumeBaseInfoFillException.java
 D:\IdeaProjects\EmploymentReProject2\common\src\main\java\com\glimmer\exception\ResumeScholarshipInfoException.java
 D:\IdeaProjects\EmploymentReProject2\common\src\main\java\com\glimmer\exception\EvaluaException.java

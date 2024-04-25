@@ -1,6 +1,7 @@
 package com.glimmer.server.impl;
 
 import com.glimmer.clients.JobRecommendationClient;
+import com.glimmer.constant.Url;
 import com.glimmer.entity.PdfUrl;
 import com.glimmer.entity.User;
 import com.glimmer.mapper.FillInResumeMapper;
@@ -45,7 +46,7 @@ public class JobCommendServiceImpl implements JobCommandService {
 
         String url = pdfUrls[0].getUrl();
 
-        String mlUrl = "http://113.54.246.39:5000/comment";
+        String mlUrl = "http://"+ Url.mlUrl +":"+Url.port+"/comment";
 
         if (url==null){
             return  null;

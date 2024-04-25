@@ -33,6 +33,7 @@ com\glimmer\controller\interactFront\HrRequirementsController.class
 com\glimmer\server\LoginService.class
 com\glimmer\config\WebConfig.class
 com\glimmer\controller\ml\JobRecommendController.class
+com\glimmer\utils\SendResume.class
 com\glimmer\server\RequirementService.class
 com\glimmer\App.class
 com\glimmer\utils\UploadFile.class
